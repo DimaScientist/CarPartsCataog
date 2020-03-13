@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="unknow" id="insert-price-1">
+        <insert tableName="price">
+            <column>pridate = "2019-02-02" </column>
+            <column>rrp = 103,98</column>
+            <column>countryid = 3</column>
+            <column>partnum = "7WETR6ER"</column>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

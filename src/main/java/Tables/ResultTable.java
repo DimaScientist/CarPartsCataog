@@ -13,6 +13,7 @@ public class ResultTable {
     private String priceDate;
     private int numberOfReferences;
     private int numberOfVehiclesLinkings;
+    private String articleStatus;
 
     public String getArticleStatus() {
         return articleStatus;
@@ -21,9 +22,6 @@ public class ResultTable {
     public void setArticleStatus(String articleStatus) {
         this.articleStatus = articleStatus;
     }
-
-    private String articleStatus;
-
 
 
     public ResultTable(){}
