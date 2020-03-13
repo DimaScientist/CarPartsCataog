@@ -5,7 +5,7 @@ import java.util.Date;
 public class ResultTable {
 
     private String brandType;
-    private long partNumber;
+    private String partNumber;
     private String altPartNum;
     private String brand;
     private String description;
@@ -36,11 +36,11 @@ public class ResultTable {
         this.brandType = brandType;
     }
 
-    public long getPartNumber() {
+    public String getPartNumber() {
         return partNumber;
     }
 
-    public void setPartNumber(long partNumber) {
+    public void setPartNumber(String partNumber) {
         this.partNumber = partNumber;
     }
 
