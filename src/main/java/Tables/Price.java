@@ -2,34 +2,30 @@ package Tables;
 
 public class Price {
 
-    private Country country;
+    private Integer countryId;
 
-    private PartsVehicles partsVehicles;
+    private String partNum;
 
     private String priceDate;
 
     private double rrp;
 
-    public Price(Country country, PartsVehicles partsVehicles, String priceDate, double rrp) {
-        this.country = country;
-        this.partsVehicles = partsVehicles;
-        this.priceDate = priceDate;
-        this.rrp = rrp;
-    }
-    public Country getCountry() {
-        return country;
+    public Price(){}
+
+    public Integer getCountryId() {
+        return countryId;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCountryId(Integer countryId) {
+        this.countryId = countryId;
     }
 
-    public PartsVehicles getPartsVehicles() {
-        return partsVehicles;
+    public String getPartNum() {
+        return partNum;
     }
 
-    public void setPartsVehicles(PartsVehicles partsVehicles) {
-        this.partsVehicles = partsVehicles;
+    public void setPartNum(String partNum) {
+        this.partNum = partNum;
     }
 
     public String getPriceDate() {
@@ -47,5 +43,9 @@ public class Price {
     public void setRrp(double rrp) {
         this.rrp = rrp;
     }
+
+
+
+
 
 }

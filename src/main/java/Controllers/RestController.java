@@ -1,6 +1,6 @@
 package Controllers;
 
-import Service.JDBCAnswer;
+import Service.JDBCAnswerResultPriceHistory;
 import Tables.ResultTable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ public class RestController {
     @GetMapping(value = "/db/{partnum,brandtypeId}")
     public @ResponseBody List<ResultTable> getData(
             @PathVariable Integer partnum, @PathVariable Integer brandtypeId){
-        JDBCAnswer jdbcAnswer = new JDBCAnswer(brandtypeId, partnum);
+        JDBCAnswerResultPriceHistory jdbcAnswer = new JDBCAnswerResultPriceHistory(brandtypeId, partnum);
         return jdbcAnswer.getResultTableList();
     }
 }

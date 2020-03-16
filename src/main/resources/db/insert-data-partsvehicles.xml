@@ -10,7 +10,6 @@
         <insert tableName="partsvehicles">
             <column>altpartnum = "DGDG123234"</column>
             <column>carid = 2</column>
-
         </insert>
 
     </changeSet>

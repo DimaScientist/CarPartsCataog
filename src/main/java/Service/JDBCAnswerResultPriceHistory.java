@@ -5,14 +5,14 @@ import Tables.ResultTable;
 import java.sql.*;
 import java.util.*;
 
-public class JDBCAnswer {
+public class JDBCAnswerResultPriceHistory {
 
     private static List<ResultTable> resultTableList;
 
     private String brandType;
     private int partnum;
 
-    public JDBCAnswer(int brandTypeId, int partnum){
+    public JDBCAnswerResultPriceHistory(int brandTypeId, int partnum){
         resultTableList = new ArrayList<>();
         this.brandType = BrandType.getBrandType(brandTypeId);
         this.partnum = partnum;
@@ -20,9 +20,9 @@ public class JDBCAnswer {
     }
 
     private void createResultTableList(){
-        final String passsword = "1234";
-        final String postgresUser = "postgres";
-        final String urlAdress = "jdbc:postgresql://127.0.0.1:5432/catalogzapchasti";
+
+        PosgreSQLSpace postgres = new PosgreSQLSpace();
+
 
         String SQL_SELECT = String.format("SELECT public.parts.brantype AS brandType, " +
                 "public.parts.partnum AS partNumber, " +
@@ -40,7 +40,7 @@ public class JDBCAnswer {
                 "WHERE public.parts.partnum = %d AND public.parts.brandrype = %s", this.partnum, this.brandType);
 
         try(Connection conn = DriverManager.getConnection(
-                urlAdress, postgresUser, passsword);
+                postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
             PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)){
             ResultSet resultSet = preparedStatement.executeQuery();
 

@@ -2,30 +2,27 @@ package Tables;
 
 public class PartsVehicles {
 
-    private long id;
+    private long carId;
 
-    private Vehicles vehicles;
+    private String altPartNum;
 
-    public PartsVehicles(long id, Vehicles vehicles) {
-        this.id = id;
-        this.vehicles = vehicles;
+    public PartsVehicles() {
     }
 
-    public long getId() {
-        return id;
+    public long getCarId() {
+        return carId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCarId(long carId) {
+        this.carId = carId;
     }
 
-    public Vehicles getVehicles() {
-        return vehicles;
+    public String getAltPartNum() {
+        return altPartNum;
     }
 
-    public void setVehicles(Vehicles vehicles) {
-        this.vehicles = vehicles;
+    public void setAltPartNum(String altPartNum) {
+        this.altPartNum = altPartNum;
     }
-
 
 }

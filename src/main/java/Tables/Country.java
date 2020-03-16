@@ -1,19 +1,17 @@
 package Tables;
 
+import liquibase.pro.packaged.S;
+
 public class Country {
 
     private int id;
 
-    private char[] code;
+    private String code;
 
     private String nameCountry;
 
 
-    public Country(int id, char[] code,  String nameCountry) {
-        this.id = id;
-        this.code = code;
-        this.nameCountry = nameCountry;
-    }
+    public Country() {}
 
 
     public int getId() {
@@ -32,11 +30,11 @@ public class Country {
         this.nameCountry = nameCountry;
     }
 
-    public char[] getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(char[] code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
