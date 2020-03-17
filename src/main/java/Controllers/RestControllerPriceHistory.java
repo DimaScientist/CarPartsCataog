@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class RestController {
+public class RestControllerPriceHistory {
 
     @GetMapping(value = "/db/{partnum,brandtypeId}")
     public @ResponseBody List<ResultTable> getData(
