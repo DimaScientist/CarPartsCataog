@@ -10,6 +10,10 @@ import java.util.List;
 public class JDBCPrice {
 
     private List<Price> priceList;
+    private static final String SQL_SELECT = "SELECT public.price.pridate " +
+            "AS pridate, public.price.rrp AS rrp, " +
+            "public.price.countryid AS countrid, public.price.partnum AS partnum" +
+            " FROM public.price";
 
     public JDBCPrice(){
     }
@@ -18,11 +22,6 @@ public class JDBCPrice {
         priceList = new ArrayList<>();
 
         PosgreSQLSpace postgres = new PosgreSQLSpace();
-
-
-        String SQL_SELECT = "SELECT public.price.pridate AS pridate, public.price.rrp AS rrp, " +
-                "public.price.countryid AS countrid, public.price.partnum AS partnum" +
-                " FROM public.price";
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -47,12 +46,8 @@ public class JDBCPrice {
 
             }
 
-        }
-        catch (SQLException e){
+        } catch (Exception e){
             System.err.println(e.getMessage());
-        }
-        catch(Exception ex){
-            System.err.println(ex.getMessage());
         }
     }
 

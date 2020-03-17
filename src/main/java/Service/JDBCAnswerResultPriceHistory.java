@@ -12,6 +12,7 @@ public class JDBCAnswerResultPriceHistory {
     private String brandType;
     private int partnum;
 
+
     public JDBCAnswerResultPriceHistory(int brandTypeId, int partnum){
         resultTableList = new ArrayList<>();
         this.brandType = BrandType.getBrandType(brandTypeId);
@@ -73,12 +74,8 @@ public class JDBCAnswerResultPriceHistory {
 
             }
 
-        }
-        catch (SQLException e){
+        } catch (Exception e){
             System.err.println(e.getMessage());
-        }
-        catch(Exception ex){
-            System.err.println(ex.getMessage());
         }
     }
 

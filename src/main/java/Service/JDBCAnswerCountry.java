@@ -10,6 +10,9 @@ import java.util.List;
 public class JDBCAnswerCountry {
 
     private List<Country> ListCountries;
+    private static  final String SQL_SELECT = "SELECT public.country.countryId " +
+            "AS Id, public.country.Code AS Code, public.country.nameCountry" +
+            " AS nameCountry FROM public.country";
 
     public  JDBCAnswerCountry(){
 
@@ -19,11 +22,6 @@ public class JDBCAnswerCountry {
         ListCountries = new ArrayList<>();
         PosgreSQLSpace postgres = new PosgreSQLSpace();
 
-
-        final String SQL_SELECT = "SELECT public.country.countryId " +
-                "AS Id, public.country.Code AS Code, public.country.nameCountry" +
-                " AS nameCountry FROM public.country";
-
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
             Statement statement = conn.createStatement()){
@@ -31,7 +29,7 @@ public class JDBCAnswerCountry {
 
             while (resultSet.next()){
 
-                Integer countryId = resultSet.getInt("  Id");
+                int countryId = resultSet.getInt("  Id");
                 String nameCountry = resultSet.getString("nameCountry");
                 String Code = resultSet.getString("Code");
 
@@ -44,12 +42,8 @@ public class JDBCAnswerCountry {
 
             }
 
-        }
-        catch (SQLException e){
+        } catch (Exception e){
             System.err.println(e.getMessage());
-        }
-        catch(Exception ex){
-            System.err.println(ex.getMessage());
         }
 
     }
