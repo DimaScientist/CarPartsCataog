@@ -19,13 +19,15 @@ public class JDBCAnswerPartsVehicles {
         PosgreSQLSpace postgres = new PosgreSQLSpace();
 
 
-        String SQL_SELECT = "SELECT public.partsvehicles.carid AS carId, public.partsvehicles.altpartnum AS altpartnum" +
+        final String SQL_SELECT = "SELECT public.partsvehicles.carid" +
+                " AS carId, public.partsvehicles.altpartnum " +
+                "AS altpartnum" +
                 " FROM public.partsvehicles";
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
-            PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)){
-            ResultSet resultSet = preparedStatement.executeQuery();
+            Statement statement = conn.createStatement()){
+            ResultSet resultSet = statement.executeQuery(SQL_SELECT);
 
             while (resultSet.next()){
 

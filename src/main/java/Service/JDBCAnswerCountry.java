@@ -20,12 +20,14 @@ public class JDBCAnswerCountry {
         PosgreSQLSpace postgres = new PosgreSQLSpace();
 
 
-        String SQL_SELECT = "SELECT public.country.countryId AS Id, public.country.Code AS Code, public.country.nameCountry AS nameCountry FROM public.country";
+        final String SQL_SELECT = "SELECT public.country.countryId " +
+                "AS Id, public.country.Code AS Code, public.country.nameCountry" +
+                " AS nameCountry FROM public.country";
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
-            PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)){
-            ResultSet resultSet = preparedStatement.executeQuery();
+            Statement statement = conn.createStatement()){
+            ResultSet resultSet = statement.executeQuery(SQL_SELECT);
 
             while (resultSet.next()){
 
