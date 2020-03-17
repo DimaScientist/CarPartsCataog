@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+
+//Контроллер для partsvehicles: id машины и alpartnum
 @Controller
 public class RestControllerPartsVehicles {
 

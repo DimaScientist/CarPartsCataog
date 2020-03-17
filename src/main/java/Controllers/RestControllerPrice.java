@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+//Контроллер для price: id страны, partnum, дата сделки, rrp
 @Controller
 public class RestControllerPrice {
 

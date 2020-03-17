@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+
+//Контроллер для вывода стран: id, код, название
 @Controller
 public class RestControllerCountry {
 

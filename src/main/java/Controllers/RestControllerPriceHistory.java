@@ -9,6 +9,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/*Контроллер для PriceHistory:
+
+    brandType;
+    partNumber;
+    altPartNum;
+    brand;
+    description;
+    rrp;
+    riceDate;
+    numberOfReferences;
+    numberOfVehiclesLinkings;
+    articleStatus;
+ */
 @Controller
 public class RestControllerPriceHistory {
 
