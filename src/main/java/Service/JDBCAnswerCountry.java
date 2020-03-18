@@ -10,9 +10,10 @@ import java.util.List;
 public class JDBCAnswerCountry {
 
     private List<Country> ListCountries;
-    private static  final String SQL_SELECT = "SELECT public.country.countryId " +
-            "AS Id, public.country.Code AS Code, public.country.nameCountry" +
-            " AS nameCountry FROM public.country";
+    private static  final String SQL_SELECT = "SELECT public.country.countryId AS Id," +
+            " public.country.Code AS Code," +
+            " public.country.nameCountry AS nameCountry" +
+            " FROM public.country";
 
     public  JDBCAnswerCountry(){
 
