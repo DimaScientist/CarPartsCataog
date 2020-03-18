@@ -2,10 +2,10 @@ package Controllers;
 
 import Service.JDBCAnswerResultPriceHistory;
 import Tables.ResultTable;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ import java.util.List;
     numberOfVehiclesLinkings;
     articleStatus;
  */
-@Controller
+@RestController
 public class RestControllerPriceHistory {
 
     @GetMapping(value = "/db/{partnum,brandtypeId}")
