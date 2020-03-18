@@ -1,10 +1,8 @@
-package Controllers;
+package org.example.Controllers;
 
-import Service.JDBCPrice;
-import Tables.Price;
-import org.springframework.stereotype.Controller;
+import org.example.Service.JDBCPrice;
+import org.example.Tables.Price;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

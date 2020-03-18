@@ -1,6 +1,6 @@
-package Service;
+package org.example.Service;
 
-import Tables.ResultTable;
+import org.example.Tables.ResultTable;
 
 import java.sql.*;
 import java.util.*;

@@ -1,6 +1,4 @@
-package Tables;
-
-import liquibase.pro.packaged.S;
+package org.example.Tables;
 
 public class Country {
 

@@ -1,7 +1,6 @@
-package Service;
+package org.example.Service;
 
-import Tables.Country;
-import Tables.ResultTable;
+import org.example.Tables.Country;
 
 import java.sql.*;
 import java.util.ArrayList;

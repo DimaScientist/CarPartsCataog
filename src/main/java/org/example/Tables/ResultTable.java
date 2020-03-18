@@ -1,6 +1,4 @@
-package Tables;
-
-import java.util.Date;
+package org.example.Tables;
 
 public class ResultTable {
 

@@ -1,4 +1,4 @@
-package Tables;
+package org.example.Tables;
 
 public class Vehicles {
 

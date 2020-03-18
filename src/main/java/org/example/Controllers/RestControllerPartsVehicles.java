@@ -1,11 +1,9 @@
-package Controllers;
+package org.example.Controllers;
 
 
-import Service.JDBCAnswerPartsVehicles;
-import Tables.PartsVehicles;
-import org.springframework.stereotype.Controller;
+import org.example.Service.JDBCAnswerPartsVehicles;
+import org.example.Tables.PartsVehicles;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

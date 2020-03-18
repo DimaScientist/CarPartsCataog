@@ -1,7 +1,6 @@
-package Service;
+package org.example.Service;
 
-import Tables.PartsVehicles;
-import Tables.Price;
+import org.example.Tables.Price;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,10 +1,9 @@
-package Controllers;
+package org.example.Controllers;
 
-import Service.JDBCAnswerResultPriceHistory;
-import Tables.ResultTable;
+import org.example.Service.JDBCAnswerResultPriceHistory;
+import org.example.Tables.ResultTable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

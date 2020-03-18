@@ -1,4 +1,4 @@
-package Service;
+package org.example.Service;
 
 public class PosgreSQLSpace {
 

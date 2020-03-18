@@ -1,11 +1,9 @@
-package Controllers;
+package org.example.Controllers;
 
 
-import Service.JDBCAnswerCountry;
-import Tables.Country;
-import org.springframework.stereotype.Controller;
+import org.example.Service.JDBCAnswerCountry;
+import org.example.Tables.Country;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
