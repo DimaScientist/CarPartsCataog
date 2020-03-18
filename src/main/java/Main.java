@@ -1,14 +1,10 @@
-import javafx.application.Application;
-import javafx.stage.Stage;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class Main extends Application {
+@SpringBootApplication
+public class Main{
 
     public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-
+        SpringApplication.run(Main.class, args);
     }
 }
