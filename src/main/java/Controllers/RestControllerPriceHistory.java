@@ -26,7 +26,7 @@ import java.util.List;
 public class RestControllerPriceHistory {
 
     @GetMapping(value = "/db/{partnum,brandtypeId}")
-    public @ResponseBody List<ResultTable> getData(
+    public List<ResultTable> getData(
             @PathVariable Integer partnum, @PathVariable Integer brandtypeId){
         JDBCAnswerResultPriceHistory jdbcAnswer = new JDBCAnswerResultPriceHistory(brandtypeId, partnum);
         return jdbcAnswer.getResultTableList();

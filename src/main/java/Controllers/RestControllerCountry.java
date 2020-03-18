@@ -16,7 +16,7 @@ import java.util.List;
 public class RestControllerCountry {
 
     @GetMapping(value = "/country")
-    public @ResponseBody List<Country> getData(){
+    public List<Country> getData(){
         JDBCAnswerCountry answer = new JDBCAnswerCountry();
         return answer.getListCountries();
     }

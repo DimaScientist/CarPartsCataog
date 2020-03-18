@@ -14,7 +14,7 @@ import java.util.List;
 public class RestControllerPrice {
 
     @GetMapping(value = "/price")
-    public @ResponseBody List<Price> getData(){
+    public List<Price> getData(){
         JDBCPrice answer = new JDBCPrice();
         return answer.getPriceList();
     }

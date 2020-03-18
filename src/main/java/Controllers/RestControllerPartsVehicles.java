@@ -16,7 +16,7 @@ import java.util.List;
 public class RestControllerPartsVehicles {
 
     @GetMapping(value = "/partsvehicles")
-    public @ResponseBody List<PartsVehicles> getData(){
+    public List<PartsVehicles> getData(){
         JDBCAnswerPartsVehicles answer = new JDBCAnswerPartsVehicles();
         return answer.getPartsVehiclesList();
     }
