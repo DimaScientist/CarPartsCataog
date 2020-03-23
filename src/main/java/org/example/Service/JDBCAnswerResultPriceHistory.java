@@ -25,14 +25,14 @@ public class JDBCAnswerResultPriceHistory {
         PosgreSQLSpace postgres = new PosgreSQLSpace();
 
 
-        String SQL_SELECT = String.format("SELECT brantype AS brandtype, " +
-                "partnum AS partnumber, " +
-                "altpartnum AS altpartnum, " +
-                "brand AS brand, " +
-                "descr AS description, " +
-                "rrp AS rrp, " +
-                "pridate AS priceDate, " +
-                "artstat AS articlestatus  " +
+        String SQL_SELECT = String.format("SELECT brantype, " +
+                "partnum, " +
+                "altpartnum, " +
+                "brand, " +
+                "descr, " +
+                "rrp, " +
+                "pridate, " +
+                "artstat  " +
                 "FROM country JOIN price " +
                 "ON country.countryId = price.countryId " +
                 "JOIN parts ON price.partnum =parts.partnum " +
@@ -47,16 +47,16 @@ public class JDBCAnswerResultPriceHistory {
 
             while (resultSet.next()){
 
-                String brandType = resultSet.getString("brandType");
-                String partNumber = resultSet.getString("partNumber");
-                String altPartNum = resultSet.getString("altPartNum");
+                String brandType = resultSet.getString("brandtype");
+                String partNumber = resultSet.getString("partnumr");
+                String altPartNum = resultSet.getString("altpartnum");
                 String brand = resultSet.getString("brand");
-                String description = resultSet.getString("description");
+                String description = resultSet.getString("descr");
                 double rrp = resultSet.getDouble("rrp");
-                String priceDate = resultSet.getString("priceDate");
+                String priceDate = resultSet.getString("pridate");
                 int numberOfReferences = resultSet.getInt("numOfRef");
                 int numberOfVehiclesLinkings = resultSet.getInt("numOfVehLinks");
-                String articleStatus = resultSet.getString("articleStatus");
+                String articleStatus = resultSet.getString("artstat");
 
                 ResultTable resultTable = new ResultTable();
                 resultTable.setBrandType(brandType);

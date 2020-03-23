@@ -2,6 +2,7 @@ package org.example.Controllers;
 
 import org.example.Service.JDBCPrice;
 import org.example.Tables.Price;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,7 @@ import java.util.List;
 @RequestMapping("/price")
 public class RestControllerPrice {
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE )
     public List<Price> getData(){
         JDBCPrice answer = new JDBCPrice();
         return answer.getPriceList();

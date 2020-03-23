@@ -9,9 +9,9 @@ import java.util.List;
 public class JDBCAnswerCountry {
 
     private List<Country> ListCountries;
-    private static  final String SQL_SELECT = "SELECT countryid AS id," +
-            " code AS code," +
-            " namecountry AS namecountry" +
+    private static  final String SQL_SELECT = "SELECT countryid," +
+            " code," +
+            " namecountry" +
             " FROM country";
 
     public  JDBCAnswerCountry(){
@@ -29,7 +29,7 @@ public class JDBCAnswerCountry {
 
             while (resultSet.next()){
 
-                int countryId = resultSet.getInt("  id");
+                int countryId = resultSet.getInt("countryid");
                 String nameCountry = resultSet.getString("namecountry");
                 String Code = resultSet.getString("code");
 

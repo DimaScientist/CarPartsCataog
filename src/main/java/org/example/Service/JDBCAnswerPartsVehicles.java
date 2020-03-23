@@ -10,8 +10,8 @@ public class JDBCAnswerPartsVehicles {
 
     private List<PartsVehicles> partsVehiclesList;
     private static final String SQL_SELECT = "SELECT" +
-            " carid AS carId, " +
-            "altpartnum AS altpartnum" +
+            " carid, " +
+            "altpartnum" +
             " FROM partsvehicles";
 
 
@@ -30,8 +30,8 @@ public class JDBCAnswerPartsVehicles {
 
             while (resultSet.next()){
 
-                String altpartnum = resultSet.getString("  altpartnum");
-                int carid = resultSet.getInt("carId");
+                String altpartnum = resultSet.getString("altpartnum");
+                int carid = resultSet.getInt("carid");
 
                 PartsVehicles partsVehicles = new PartsVehicles();
                 partsVehicles.setCarId(carid);
