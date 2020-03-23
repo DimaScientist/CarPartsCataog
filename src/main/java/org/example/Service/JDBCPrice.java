@@ -9,10 +9,11 @@ import java.util.List;
 public class JDBCPrice {
 
     private List<Price> priceList;
-    private static final String SQL_SELECT = "SELECT public.price.pridate " +
-            "AS pridate, public.price.rrp AS rrp, " +
-            "public.price.countryid AS countrid, public.price.partnum AS partnum" +
-            " FROM public.price";
+    private static final String SQL_SELECT = "SELECT pridate AS pridate," +
+            " rrp AS rrp, " +
+            "countryid AS countrid, " +
+            "partnum AS partnum" +
+            " FROM price";
 
     public JDBCPrice(){
     }

@@ -9,10 +9,10 @@ import java.util.List;
 public class JDBCAnswerPartsVehicles {
 
     private List<PartsVehicles> partsVehiclesList;
-    private static final String SQL_SELECT = "SELECT public.partsvehicles.carid" +
-            " AS carId, public.partsvehicles.altpartnum " +
-            "AS altpartnum" +
-            " FROM public.partsvehicles";
+    private static final String SQL_SELECT = "SELECT" +
+            " carid AS carId, " +
+            "altpartnum AS altpartnum" +
+            " FROM partsvehicles";
 
 
     public JDBCAnswerPartsVehicles(){}

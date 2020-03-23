@@ -25,19 +25,19 @@ public class JDBCAnswerResultPriceHistory {
         PosgreSQLSpace postgres = new PosgreSQLSpace();
 
 
-        String SQL_SELECT = String.format("SELECT public.parts.brantype AS brandType, " +
-                "public.parts.partnum AS partNumber, " +
-                "public.partsvehicles.altpartnum AS altPartNum, " +
-                "public.parts.brand AS brand, " +
-                "public.parts.descr AS description, " +
-                "public.price.rrp AS rrp, " +
-                "public.price.pridate AS priceDate, " +
-                "public.parts.artstat AS articleStatus  " +
-                "FROM public.country JOIN public.price " +
-                "ON public.country.countryId = public.price.countryId " +
-                "JOIN public.parts ON public.price.partnum = public.parts.partnum " +
-                "JOIN public.partsvehicles  ON public.parts.faltpartnum = public.parts.altpartnum " +
-                "JOIN public.vehicles ON public.partsvehicles.carid = public.vehicles.carid " +
+        String SQL_SELECT = String.format("SELECT brantype AS brandtype, " +
+                "partnum AS partnumber, " +
+                "altpartnum AS altpartnum, " +
+                "brand AS brand, " +
+                "descr AS description, " +
+                "rrp AS rrp, " +
+                "pridate AS priceDate, " +
+                "artstat AS articlestatus  " +
+                "FROM country JOIN price " +
+                "ON country.countryId = price.countryId " +
+                "JOIN parts ON price.partnum =parts.partnum " +
+                "JOIN partsvehicles  ON parts.faltpartnum = parts.altpartnum " +
+                "JOIN vehicles ONpartsvehicles.carid = vehicles.carid " +
                 "WHERE public.parts.partnum = %d AND public.parts.brandrype = %s", this.partnum, this.brandType);
 
         try(Connection conn = DriverManager.getConnection(
