@@ -9,8 +9,6 @@ public class ResultTable {
     private String description;
     private double rrp;
     private String priceDate;
-    private int numberOfReferences;
-    private int numberOfVehiclesLinkings;
     private String articleStatus;
 
     public String getArticleStatus() {
@@ -79,23 +77,6 @@ public class ResultTable {
     public void setPriceDate(String priceDate) {
         this.priceDate = priceDate;
     }
-
-    public int getNumberOfReferences() {
-        return numberOfReferences;
-    }
-
-    public void setNumberOfReferences(int numberOfReferences) {
-        this.numberOfReferences = numberOfReferences;
-    }
-
-    public int getNumberOfVehiclesLinkings() {
-        return numberOfVehiclesLinkings;
-    }
-
-    public void setNumberOfVehiclesLinkings(int numberOfVehiclesLinkings) {
-        this.numberOfVehiclesLinkings = numberOfVehiclesLinkings;
-    }
-
 
 
 }

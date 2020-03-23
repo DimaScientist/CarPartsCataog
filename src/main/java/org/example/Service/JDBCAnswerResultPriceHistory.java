@@ -25,7 +25,8 @@ public class JDBCAnswerResultPriceHistory {
         PosgreSQLSpace postgres = new PosgreSQLSpace();
 
 
-        String SQL_SELECT = String.format("SELECT brantype, " +
+        String SQL_SELECT = String.format("SELECT " +
+                "brantype, " +
                 "partnum, " +
                 "altpartnum, " +
                 "brand, " +
@@ -54,8 +55,6 @@ public class JDBCAnswerResultPriceHistory {
                 String description = resultSet.getString("descr");
                 double rrp = resultSet.getDouble("rrp");
                 String priceDate = resultSet.getString("pridate");
-                int numberOfReferences = resultSet.getInt("numOfRef");
-                int numberOfVehiclesLinkings = resultSet.getInt("numOfVehLinks");
                 String articleStatus = resultSet.getString("artstat");
 
                 ResultTable resultTable = new ResultTable();
@@ -66,8 +65,6 @@ public class JDBCAnswerResultPriceHistory {
                 resultTable.setDescription(description);
                 resultTable.setRrp(rrp);
                 resultTable.setPriceDate(priceDate);
-                resultTable.setNumberOfReferences(numberOfReferences);
-                resultTable.setNumberOfVehiclesLinkings(numberOfVehiclesLinkings);
                 resultTable.setArticleStatus(articleStatus);
 
                 resultTableList.add(resultTable);
