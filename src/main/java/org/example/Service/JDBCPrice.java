@@ -9,8 +9,8 @@ import java.util.List;
 public class JDBCPrice {
 
     private List<Price> priceList;
-    private static final String SQL_SELECT = "SELECT pridate," +
-            " rrp, " +
+    private static final String SQL_SELECT = "SELECT pridate, " +
+            "rrp, " +
             "countryid, " +
             "partnum" +
             " FROM price";
