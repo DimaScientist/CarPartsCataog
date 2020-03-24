@@ -7,10 +7,9 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet author="unknow" id="create-table-price-1">
-        <dropTable cascadeConstraints="true"
-                   catalogName="catalogavtozapchasti"
-                   schemaName="public"
-                   tableName="price"/>
+        <sql>
+            DROP TABLE IF EXISTS public.price CASCADE;
+        </sql>
         <createTable
                 catalogName="catalogavtozapchasti"
                 schemaName="public"
