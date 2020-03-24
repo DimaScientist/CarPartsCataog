@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="unknow" id="insert-country-1">
+    <changeSet author="unknow" id="create-table-price-1">
         <dropTable cascadeConstraints="true"
                    catalogName="catalogavtozapchasti"
                    schemaName="public"
@@ -16,8 +16,41 @@
                 schemaName="public"
                 tableName="price">
 
+            <column name="pridate" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="rrp" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="countryid" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="partnum" type="varchar(13)">
+                <constraints nullable="false"/>
+            </column>
+
         </createTable>
+        
+        <addPrimaryKey
+                tableName="price"
+                columnNames="countryid,partnum"
+                constraintName="price_pkey"/>
 
+        <addForeignKeyConstraint
+                baseTableName="price"
+                baseColumnNames="countryid"
+                constraintName="fk_countryid"
+                referencedTableName="country"
+                referencedColumnNames="countryid" />
 
+        <addForeignKeyConstraint
+                baseTableName="price"
+                baseColumnNames="partnum"
+                constraintName="fk_partnum"
+                referencedTableName="parts"
+                referencedColumnNames="partnum"/>
     </changeSet>
 </databaseChangeLog>

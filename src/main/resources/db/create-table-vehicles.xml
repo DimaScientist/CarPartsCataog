@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="unknow" id="insert-country-1">
+    <changeSet author="unknow" id="create-table-vehicles-1">
         <dropTable cascadeConstraints="true"
                    catalogName="catalogavtozapchasti"
                    schemaName="public"
@@ -17,8 +17,20 @@
                 schemaName="public"
                 tableName="vehicles">
 
-        </createTable>
+            <column name="carid" type="int">
+                <constraints nullable="false"/>
+            </column>
 
+            <column name="brand" type="varchar(15)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+        
+        <addPrimaryKey
+                tableName="vehicles"
+                columnNames="carid"
+                constraintName="vehicles_pkey"/>
 
     </changeSet>
 </databaseChangeLog>
