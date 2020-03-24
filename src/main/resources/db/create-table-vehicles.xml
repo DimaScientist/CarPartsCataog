@@ -7,10 +7,18 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet author="unknow" id="insert-country-1">
-        <insert tableName="country">
-            <column>countryid=11</column>
-            <column>namecountry = {"Turkey"}</column>
-            <column>code = {"TUR"}</column>
-        </insert>
+        <dropTable cascadeConstraints="true"
+                   catalogName="catalogavtozapchasti"
+                   schemaName="public"
+                   tableName="vehicles"/>
+
+        <createTable
+                catalogName="catalogavtozapchasti"
+                schemaName="public"
+                tableName="vehicles">
+
+        </createTable>
+
+
     </changeSet>
 </databaseChangeLog>

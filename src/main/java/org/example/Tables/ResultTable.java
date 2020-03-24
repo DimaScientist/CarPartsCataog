@@ -78,5 +78,4 @@ public class ResultTable {
         this.priceDate = priceDate;
     }
 
-
 }
