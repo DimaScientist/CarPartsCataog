@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="unknow" id="1">
+        <sql>
+            MERGE INTO users u
+                USING (VALUES(11, 123, 1234)) v
+            ON v.column1 = u.idusers
+                WHEN NOT MATCHED
+                    INSERT VALUES(v.column1, v.column2, v.column3)
+                WHEN MATCHED
+                    UPDATE SET
+                        login = v.column2,
+                        password = v.column3;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

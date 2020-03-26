@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="unknow" id="1">
+        <sql>
+            MERGE INTO vehicles veh
+                USING (VALUES({'brand'}, 1)) v
+            ON v.column2 = veh.carid
+                WHEN NOT MATCHED
+                    INSERT VALUES(v.columhn1, v.column2)
+                WHEN MATCHED
+                    UPDATE SET
+                        brand = v.column1;
+        </sql>
+    </changeSet>
+</databaseChangeLog>
