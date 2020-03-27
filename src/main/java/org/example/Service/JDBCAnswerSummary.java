@@ -1,28 +1,26 @@
 package org.example.Service;
 
-import org.example.Tables.Price;
 import org.example.Tables.Summary;
 
-import javax.print.DocFlavor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class JDBCAnswerSummary {
     private Summary summary;
     private PosgreSQLSpace postgres;
+    private String partnum;
 
     public Summary getListSummary() {
         createSummary();
         return summary;
     }
 
-    public  JDBCAnswerSummary(){
+    public  JDBCAnswerSummary(String partnum){
         postgres = new PosgreSQLSpace();
+        this.partnum = partnum;
         summary = new Summary();
     }
 
@@ -138,8 +136,25 @@ public class JDBCAnswerSummary {
 
     private double getRrpRange(){
         double rrpRange = 0;
-        return rrpRange;
+        String SQL_SELECT = String.format("SELECT AVG(rrp)\n" +
+                "\tFROM public.price" +
+                "\tWHERE price.partnum = '%s';", this.partnum);
 
+        try(Connection conn = DriverManager.getConnection(
+                postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
+            Statement statement = conn.createStatement()){
+            ResultSet resultSet = statement.executeQuery(SQL_SELECT);
+
+            while (resultSet.next()){
+
+                rrpRange = resultSet.getInt("avg");
+
+            }
+
+        } catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+        return rrpRange;
     }
 
 }
