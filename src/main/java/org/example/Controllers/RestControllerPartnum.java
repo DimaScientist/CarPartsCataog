@@ -18,6 +18,6 @@ public class RestControllerPartnum {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE )
     public List<String> getData(){
         JDBCPartNumber answer = new JDBCPartNumber();
-        return answer.getPartNumbers();
+        return answer.getPartNumber();
     }
 }

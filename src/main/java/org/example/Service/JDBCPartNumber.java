@@ -8,10 +8,8 @@ import java.util.List;
 
 public class JDBCPartNumber {
 
-    private List<Price> priceList;
-    private static final String SQL_SELECT = "SELECT pridate, " +
-            "rrp, " +
-            "countryid, " +
+    private List<String> partnumList;
+    private static final String SQL_SELECT = "SELECT "+
             "partnum " +
             "FROM price;";
 
@@ -19,7 +17,7 @@ public class JDBCPartNumber {
     }
 
     private void createPriceList(){
-        priceList = new ArrayList<>();
+        partnumList = new ArrayList<>();
 
         PosgreSQLSpace postgres = new PosgreSQLSpace();
 
@@ -30,19 +28,11 @@ public class JDBCPartNumber {
 
             while (resultSet.next()){
 
-               String pridate = resultSet.getString("pridate");
-               double rrp = resultSet.getDouble("rrp");
-               int countryid = resultSet.getInt("countryid");
                String partnum = resultSet.getString("partnum");
 
-               Price price = new Price();
-               price.setPriceDate(pridate);
-               price.setRrp(rrp);
-               price.setPartNum(partnum);
-               price.setCountryId(countryid);
 
 
-               priceList.add(price);
+                partnumList.add(partnum);
 
             }
 
@@ -51,9 +41,9 @@ public class JDBCPartNumber {
         }
     }
 
-    public List<Price> getPriceList(){
+    public List<String> getPartNumber(){
         createPriceList();
-        return priceList;
+        return partnumList;
     }
 
 }
