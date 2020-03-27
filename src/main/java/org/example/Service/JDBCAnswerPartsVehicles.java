@@ -12,7 +12,7 @@ public class JDBCAnswerPartsVehicles {
     private static final String SQL_SELECT = "SELECT" +
             " carid, " +
             "altpartnum" +
-            " FROM partsvehicles";
+            " FROM partsvehicles;";
 
 
     public JDBCAnswerPartsVehicles(){}

@@ -12,8 +12,8 @@ public class JDBCPrice {
     private static final String SQL_SELECT = "SELECT pridate, " +
             "rrp, " +
             "countryid, " +
-            "partnum" +
-            " FROM price";
+            "partnum " +
+            "FROM price;";
 
     public JDBCPrice(){
     }

@@ -23,18 +23,19 @@ public class JDBCAnswerResultPriceHistory {
         PosgreSQLSpace postgres = new PosgreSQLSpace();
 
 
-        String SQL_SELECT = String.format("SELECT " +
+        String SQL_SELECT = String.format(
+                "SELECT " +
                 "brantype, " +
-                "partnum, " +
+                "parts.partnum, " +
                 "altpartnum, " +
-                "brand, " +
+                "parts.brand, " +
                 "descr, " +
                 "rrp, " +
                 "pridate, " +
-                "artstat  " +
+                "parts.arstat  " +
                 "FROM country JOIN price " +
                 "ON country.countryId = price.countryId " +
-                "JOIN parts ON price.partnum =parts.partnum " +
+                "JOIN parts ON price.partnum = parts.partnum " +
                 "JOIN partsvehicles  ON parts.faltpartnum = partsvehicles.altpartnum " +
                 "JOIN vehicles ON partsvehicles.carid = vehicles.carid " +
                 "WHERE public.parts.partnum = %s;", this.partnum);

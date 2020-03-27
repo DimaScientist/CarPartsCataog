@@ -4,7 +4,7 @@ public class PosgreSQLSpace {
 
     private final String passsword = "1234";
     private final String postgresUser = "postgres";
-    private final String urlAdress = "jdbc:postgresql://127.0.0.1:5432/catalogavtozapchasti";
+    private final String urlAdress = "jdbc:postgresql://127.0.0.1:5432/catalogzapchasty";
 
 
     public String getPasssword() {
@@ -18,6 +18,5 @@ public class PosgreSQLSpace {
     public String getUrlAdress() {
         return urlAdress;
     }
-
 
 }

@@ -12,7 +12,7 @@ public class JDBCAnswerCountry {
     private static  final String SQL_SELECT = "SELECT countryid," +
             " code," +
             " namecountry" +
-            " FROM country";
+            " FROM country;";
 
     public  JDBCAnswerCountry(){
 
