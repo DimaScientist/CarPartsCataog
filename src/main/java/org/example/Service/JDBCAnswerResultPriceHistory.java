@@ -35,8 +35,8 @@ public class JDBCAnswerResultPriceHistory {
                 "FROM country JOIN price " +
                 "ON country.countryId = price.countryId " +
                 "JOIN parts ON price.partnum =parts.partnum " +
-                "JOIN partsvehicles  ON parts.faltpartnum = parts.altpartnum " +
-                "JOIN vehicles ONpartsvehicles.carid = vehicles.carid " +
+                "JOIN partsvehicles  ON parts.faltpartnum = partsvehicles.altpartnum " +
+                "JOIN vehicles ON partsvehicles.carid = vehicles.carid " +
                 "WHERE public.parts.partnum = %s;", this.partnum);
 
         try(Connection conn = DriverManager.getConnection(
