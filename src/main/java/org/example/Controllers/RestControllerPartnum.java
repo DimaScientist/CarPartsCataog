@@ -1,8 +1,8 @@
 package org.example.Controllers;
 
-import org.example.Service.JDBCPrice;
-import org.example.Tables.Price;
+import org.example.Service.JDBCPartNumber;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 //Контроллер для price: id страны, partnum, дата сделки, rrp
+@CrossOrigin
 @RestController
-@RequestMapping("/price")
-public class RestControllerPrice {
+@RequestMapping("/partnum")
+public class RestControllerPartnum {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE )
-    public List<Price> getData(){
-        JDBCPrice answer = new JDBCPrice();
-        return answer.getPriceList();
+    public List<String> getData(){
+        JDBCPartNumber answer = new JDBCPartNumber();
+        return answer.getPartNumbers();
     }
 }

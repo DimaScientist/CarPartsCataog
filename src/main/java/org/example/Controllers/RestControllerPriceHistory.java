@@ -2,10 +2,7 @@ package org.example.Controllers;
 
 import org.example.Service.JDBCAnswerResultPriceHistory;
 import org.example.Tables.ResultTable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,7 @@ import java.util.List;
     numberOfVehiclesLinkings;
     articleStatus;
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/db")
 public class RestControllerPriceHistory {

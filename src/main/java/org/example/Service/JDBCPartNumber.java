@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDBCPrice {
+public class JDBCPartNumber {
 
     private List<Price> priceList;
     private static final String SQL_SELECT = "SELECT pridate, " +
@@ -15,7 +15,7 @@ public class JDBCPrice {
             "partnum " +
             "FROM price;";
 
-    public JDBCPrice(){
+    public JDBCPartNumber(){
     }
 
     private void createPriceList(){
