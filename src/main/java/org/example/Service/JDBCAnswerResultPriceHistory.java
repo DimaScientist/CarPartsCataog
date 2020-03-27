@@ -38,7 +38,7 @@ public class JDBCAnswerResultPriceHistory {
                 "JOIN parts ON price.partnum = parts.partnum " +
                 "JOIN partsvehicles  ON parts.faltpartnum = partsvehicles.altpartnum " +
                 "JOIN vehicles ON partsvehicles.carid = vehicles.carid " +
-                "WHERE public.parts.partnum = %s;", this.partnum);
+                "WHERE public.parts.partnum = '%s';", this.partnum);
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -47,14 +47,14 @@ public class JDBCAnswerResultPriceHistory {
 
             while (resultSet.next()){
 
-                String brandType = resultSet.getString("brandtype");
-                String partNumber = resultSet.getString("partnumr");
+                String brandType = resultSet.getString("brantype");
+                String partNumber = resultSet.getString("partnum");
                 String altPartNum = resultSet.getString("altpartnum");
                 String brand = resultSet.getString("brand");
                 String description = resultSet.getString("descr");
                 double rrp = resultSet.getDouble("rrp");
                 String priceDate = resultSet.getString("pridate");
-                String articleStatus = resultSet.getString("artstat");
+                String articleStatus = resultSet.getString("arstat");
 
                 ResultTable resultTable = new ResultTable();
                 resultTable.setBrandType(brandType);
