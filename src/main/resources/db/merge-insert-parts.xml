@@ -8,20 +8,16 @@
 
     <changeSet author="unknow" id="1">
         <sql>
-            MERGE INTO parts p
-                USING (VALUES({'OEM'}, {'BOSCH'}, {'something'}, {'NORMAL'},
-                        {'FN93428YH'}, {'NMFWER93'})) v
-            ON v.column6 = p.partnum
-                WHEN NOT MATCHED
-                    INSERT VALUES(v.columhn1, v.column2,
-                                    v.column3, v.column4, v.column5, v.column6)
-                WHEN MATCHED
-                    UPDATE SET
-                        brantype = v.columhn1,
-                        brand = v.column2,
-                        descr = v.column3,
-                        arstat = v.column4,
-                        faltpartnum = v.column5;
+            INSERT INTO parts ( brantype, brand, descr, arstat, faltpartnum, partnum)
+                VALUES('{OEM}', '{BOSCH}', '{something}', '{NORMAL}',
+                        '{FN93428YH}', '{NMFWER93}')
+            ON CONFLICT (partnum)
+                DO UPDATE SET
+                        brantype = EXCLUDED.brantype,
+                        brand = EXCLUDED.brand,
+                        descr = EXCLUDED.descr,
+                        arstat = EXCLUDED.arstat,
+                        faltpartnum = EXCLUDED.faltpartnum;
         </sql>
     </changeSet>
 </databaseChangeLog>

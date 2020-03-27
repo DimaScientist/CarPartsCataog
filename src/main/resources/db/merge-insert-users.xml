@@ -8,15 +8,12 @@
 
     <changeSet author="unknow" id="1">
         <sql>
-            MERGE INTO users u
-                USING (VALUES(11, 123, 1234)) v
-            ON v.column1 = u.idusers
-                WHEN NOT MATCHED
-                    INSERT VALUES(v.column1, v.column2, v.column3)
-                WHEN MATCHED
-                    UPDATE SET
-                        login = v.column2,
-                        password = v.column3;
+            INSERT INTO users(idusers, login, password)
+                USING VALUES(11, 123, 1234)
+            ON CONFLICT(idusers)
+                DO UPDATE SET
+                        login = EXCLUDED.login,
+                        password = EXCLUDED.column3;
         </sql>
     </changeSet>
 </databaseChangeLog>

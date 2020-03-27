@@ -30,8 +30,6 @@ public class JDBCPartNumber {
 
                String partnum = resultSet.getString("partnum");
 
-
-
                 partnumList.add(partnum);
 
             }

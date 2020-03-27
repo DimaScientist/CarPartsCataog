@@ -8,14 +8,11 @@
 
     <changeSet author="unknow" id="1">
         <sql>
-            MERGE INTO partsvehicles p
-                USING (VALUES({'4350y80'}, 1)) v
-            ON v.column1 = p.altpartnum
-                WHEN NOT MATCHED
-                    INSERT VALUES(v.column1, v.column2)
-                WHEN MATCHED
-                    UPDATE SET
-                        carid = v.column2;
+            INSERT INTO partsvehicles (altpartnum, carid)
+                USING VALUES('{4350y80}', 1)
+            ON CONFLICT(altpartnum)
+                DO UPDATE SET
+                        carid = v.carid;
         </sql>
     </changeSet>
 </databaseChangeLog>

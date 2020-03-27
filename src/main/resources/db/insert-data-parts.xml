@@ -8,7 +8,7 @@
 
     <changeSet author="unknow" id="insert-country-1">
         <insert tableName="vehicles">
-            <column>brand = "Bosch" </column>
+            <column>brand = '{Bosch}' </column>
         </insert>
 
     </changeSet>

@@ -8,15 +8,12 @@
 
     <changeSet author="unknow" id="1">
         <sql>
-            MERGE INTO price p
-                USING (VALUES('2020-11-11', 123.11, 1, {'93u4hty'})) v
-            ON v.column3 = p.countryid AND v.column4 = p.partnum
-                WHEN NOT MATCHED
-                     INSERT VALUES(v.column1, v.column2, v.column3, v.column4)
-                 WHEN MATCHED
-                    UPDATE SET
-                         pridate = v.column1,
-                         rrp = v.column2;
+            INSERT INTO price(pridate, rrp, countryid, partnum)
+                USING VALUES('2020-11-11', 123.11, 1, '{93u4hty}')
+            ON CONFLICT(countryid, partnum)
+                DO UPDATE SET
+                         pridate = EXCLUDED.pridate,
+                         rrp = EXCLUDED.rrp;
         </sql>
     </changeSet>
 </databaseChangeLog>

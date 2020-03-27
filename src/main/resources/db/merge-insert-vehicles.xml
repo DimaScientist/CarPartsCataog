@@ -8,14 +8,11 @@
 
     <changeSet author="unknow" id="1">
         <sql>
-            MERGE INTO vehicles veh
-                USING (VALUES({'brand'}, 1)) v
-            ON v.column2 = veh.carid
-                WHEN NOT MATCHED
-                    INSERT VALUES(v.columhn1, v.column2)
-                WHEN MATCHED
-                    UPDATE SET
-                        brand = v.column1;
+            INSERT INTO vehicles(brand, carid)
+                USING VALUES('{brand}', 1)
+            ON CONFLICT(carid)
+                DO UPDATE SET
+                        brand = EXCLUDED.brand;
         </sql>
     </changeSet>
 </databaseChangeLog>

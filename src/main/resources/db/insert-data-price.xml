@@ -8,10 +8,10 @@
 
     <changeSet author="unknow" id="insert-price-1">
         <insert tableName="price">
-            <column>pridate = "2019-02-02" </column>
+            <column>pridate = '2019-02-02' </column>
             <column>rrp = 103,98</column>
             <column>countryid = 3</column>
-            <column>partnum = "7WETR6ER"</column>
+            <column>partnum = '7WETR6ER'</column>
         </insert>
 
     </changeSet>

@@ -9,8 +9,8 @@
     <changeSet author="unknow" id="insert-country-1">
         <insert tableName="country">
             <column>countryid=11</column>
-            <column>namecountry = {"Turkey"}</column>
-            <column>code = {"TUR"}</column>
+            <column>namecountry = '{Turkey}'</column>
+            <column>code = '{TUR}'</column>
         </insert>
     </changeSet>
 </databaseChangeLog>
