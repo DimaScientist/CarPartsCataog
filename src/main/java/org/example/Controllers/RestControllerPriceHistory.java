@@ -28,7 +28,7 @@ public class RestControllerPriceHistory {
 
     @GetMapping(value = "/{partnum}", produces = "application/json")
     public List<ResultTable> getData(
-            @PathVariable Integer partnum){
+            @PathVariable String partnum){
         JDBCAnswerResultPriceHistory jdbcAnswer = new JDBCAnswerResultPriceHistory(partnum);
         return jdbcAnswer.getResultTableList();
     }

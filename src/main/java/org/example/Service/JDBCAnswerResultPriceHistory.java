@@ -9,10 +9,10 @@ public class JDBCAnswerResultPriceHistory {
 
     private static List<ResultTable> resultTableList;
 
-    private int partnum;
+    private String partnum;
 
 
-    public JDBCAnswerResultPriceHistory(int partnum){
+    public JDBCAnswerResultPriceHistory(String partnum){
         resultTableList = new ArrayList<>();
         this.partnum = partnum;
 
@@ -37,7 +37,7 @@ public class JDBCAnswerResultPriceHistory {
                 "JOIN parts ON price.partnum =parts.partnum " +
                 "JOIN partsvehicles  ON parts.faltpartnum = parts.altpartnum " +
                 "JOIN vehicles ONpartsvehicles.carid = vehicles.carid " +
-                "WHERE public.parts.partnum = %d;", this.partnum);
+                "WHERE public.parts.partnum = %s;", this.partnum);
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
