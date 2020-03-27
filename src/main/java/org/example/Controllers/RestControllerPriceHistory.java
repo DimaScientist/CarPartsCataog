@@ -26,10 +26,10 @@ import java.util.List;
 @RequestMapping("/db")
 public class RestControllerPriceHistory {
 
-    @GetMapping(value = "/{partnum,brandtypeId}", produces = "application/json")
+    @GetMapping(value = "/{partnum}", produces = "application/json")
     public List<ResultTable> getData(
-            @PathVariable Integer partnum, @PathVariable Integer brandtypeId){
-        JDBCAnswerResultPriceHistory jdbcAnswer = new JDBCAnswerResultPriceHistory(brandtypeId, partnum);
+            @PathVariable Integer partnum){
+        JDBCAnswerResultPriceHistory jdbcAnswer = new JDBCAnswerResultPriceHistory(partnum);
         return jdbcAnswer.getResultTableList();
     }
 }
