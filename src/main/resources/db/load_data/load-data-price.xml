@@ -8,5 +8,21 @@
 
     <changeSet author="unknow" id="1">
 
+        <loadData catalogName="catalogavtozapchasti"
+                  commentLineStartsWith="A String"
+                  encoding="UTF-8"
+                  file="src/main/recources/db/changelog/price.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="public"
+                  separator=","
+                  tableName="price"
+                  usePreparedStatements="true">
+            <column header="countryid" name="countryid" type="integer"/>
+            <column header="rrp" name="rrp" type="numeric"/>
+            <column header="pridate" name="pridate" type="date"/>
+            <column header="partnum" name="partnum" type="text"/>
+        </loadData>
+
     </changeSet>
 </databaseChangeLog>

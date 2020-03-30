@@ -8,5 +8,19 @@
 
     <changeSet author="unknow" id="1">
 
+        <loadData catalogName="catalogavtozapchasti"
+                  commentLineStartsWith="A String"
+                  encoding="UTF-8"
+                  file="src/main/recources/db/changelog/currency.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="public"
+                  separator=","
+                  tableName="currency"
+                  usePreparedStatements="true">
+            <column header="id_curr" name="id_curr" type="integer"/>
+            <column header="name_cur" name="namecountry" type="text"/>
+        </loadData>
+
     </changeSet>
 </databaseChangeLog>

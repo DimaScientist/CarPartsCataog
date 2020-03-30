@@ -8,5 +8,23 @@
 
     <changeSet author="unknow" id="1">
 
+        <loadData catalogName="catalogavtozapchasti"
+                  commentLineStartsWith="A String"
+                  encoding="UTF-8"
+                  file="src/main/recources/db/changelog/parts.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="public"
+                  separator=","
+                  tableName="parts"
+                  usePreparedStatements="true">
+            <column header="partnum" name="partnum" type="text"/>
+            <column header="brantype" name="brantype" type="text"/>
+            <column header="faltpartnum" name="faltpartnum" type="text"/>
+            <column header="brand" name="brand" type="text"/>
+            <column header="descr" name="descr" type="text"/>
+            <column header="arstat" name="arstat" type="text"/>
+        </loadData>
+
     </changeSet>
 </databaseChangeLog>

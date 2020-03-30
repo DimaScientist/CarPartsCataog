@@ -8,14 +8,20 @@
 
     <changeSet author="unknow" id="1">
 
-        <loadData tableName="country" encoding="UTF-8"
-                  file="src/main/resources/db/changelogs/country.csv"
-                  quotchar="'" separator=";" >
-            <column header="countryid" name="login" type="STRING"/>
-            <column header="oid" name="oid" type="STRING"/>
-            <column header="nombre" name="nombre" type="STRING"/>
-            <column header="apellidos" name="apellidos" type="STRING"/>
-            <column header="activo" name="activo" type="BOOLEAN"/>
+        <loadData catalogName="catalogavtozapchasti"
+                  commentLineStartsWith="A String"
+                  encoding="UTF-8"
+                  file="src/main/recources/db/changelog/country.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="public"
+                  separator=","
+                  tableName="country"
+                  usePreparedStatements="true" >
+            <column header="countryid" name="countryid" type="integer"/>
+            <column header="id_curr" name="id_curr" type="integer"/>
+            <column header="namecountry" name="namecountry" type="text"/>
+            <column header="code" name="code" type="text"/>
         </loadData>
     </changeSet>
 </databaseChangeLog>

@@ -8,5 +8,19 @@
 
     <changeSet author="unknow" id="1">
 
+        <loadData catalogName="catalogavtozapchasti"
+                  commentLineStartsWith="A String"
+                  encoding="UTF-8"
+                  file="src/main/recources/db/changelog/vehicles.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="public"
+                  separator=","
+                  tableName="vehicles"
+                  usePreparedStatements="true" >
+            <column header="carid" name="carid" type="integer"/>
+            <column header="brand" name="brand" type="text"/>
+        </loadData>
+
     </changeSet>
 </databaseChangeLog>
