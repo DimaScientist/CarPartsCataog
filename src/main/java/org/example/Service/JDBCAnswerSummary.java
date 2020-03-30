@@ -36,9 +36,10 @@ public class JDBCAnswerSummary {
 
     private int getOeParts(){
         int oeParts = 0;
-        String SQL_SELECT= "SELECT COUNT(brantype)\n" +
+        String SQL_SELECT= String.format("SELECT COUNT(brantype)\n" +
                 "\tFROM public.parts\n" +
-                "\tWHERE brantype = 'OE';";
+                "\tWHERE brantype = 'OE' AND " +
+                "partnum = '%s';", this.partnum);
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -61,9 +62,10 @@ public class JDBCAnswerSummary {
 
     private int getIamParts(){
         int iamParts = 0;
-        String SQL_SELECT= "SELECT COUNT(brantype)\n" +
+        String SQL_SELECT= String.format("SELECT COUNT(brantype)\n" +
                 "\tFROM public.parts\n" +
-                "\tWHERE brantype = 'IAM';";
+                "\tWHERE brantype = 'IAM' " +
+                "AND partnum = '%s';", this.partnum);
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -87,9 +89,10 @@ public class JDBCAnswerSummary {
 
     private int getWholesaler(){
         int wholesaler = 0;
-        String SQL_SELECT= "SELECT COUNT(brantype)\n" +
+        String SQL_SELECT= String.format("SELECT COUNT(brantype)\n" +
                 "\tFROM public.parts\n" +
-                "\tWHERE brantype = 'Wholesalers';";
+                "\tWHERE brantype = 'Wholesalers' " +
+                "AND partnum = '%s';", this.partnum);
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -112,8 +115,9 @@ public class JDBCAnswerSummary {
 
     private String getRrpAvg(){
         double rrpAvg = 0;
-        String SQL_SELECT = "SELECT AVG(rrp)\n" +
-                "\tFROM public.price;";
+        String SQL_SELECT = String.format("SELECT AVG(rrp)\n" +
+                "\tFROM public.price" +
+               "\tWHERE price.partnum != '%s';", this.partnum);
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());

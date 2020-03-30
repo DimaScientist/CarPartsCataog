@@ -8,5 +8,14 @@
 
     <changeSet author="unknow" id="1">
 
+        <loadData tableName="country" encoding="UTF-8"
+                  file="src/main/resources/db/changelogs/country.csv"
+                  quotchar="'" separator=";" >
+            <column header="countryid" name="login" type="STRING"/>
+            <column header="oid" name="oid" type="STRING"/>
+            <column header="nombre" name="nombre" type="STRING"/>
+            <column header="apellidos" name="apellidos" type="STRING"/>
+            <column header="activo" name="activo" type="BOOLEAN"/>
+        </loadData>
     </changeSet>
 </databaseChangeLog>
