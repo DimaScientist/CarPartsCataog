@@ -38,7 +38,7 @@ public class JDBCAnswerSummary {
         int oeParts = 0;
         String SQL_SELECT= "SELECT COUNT(brantype)\n" +
                 "\tFROM public.parts\n" +
-                "\tWHERE brantype = '{OE}';";
+                "\tWHERE brantype = 'OE';";
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -63,7 +63,7 @@ public class JDBCAnswerSummary {
         int iamParts = 0;
         String SQL_SELECT= "SELECT COUNT(brantype)\n" +
                 "\tFROM public.parts\n" +
-                "\tWHERE brantype = '{IAM}';";
+                "\tWHERE brantype = 'IAM';";
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -89,7 +89,7 @@ public class JDBCAnswerSummary {
         int wholesaler = 0;
         String SQL_SELECT= "SELECT COUNT(brantype)\n" +
                 "\tFROM public.parts\n" +
-                "\tWHERE brantype = '{Wholesalers}';";
+                "\tWHERE brantype = 'Wholesalers';";
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
