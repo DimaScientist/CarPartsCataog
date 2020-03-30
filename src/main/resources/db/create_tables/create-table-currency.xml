@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="unknow" id="create-table-country-1">
+        <sql>
+            DROP TABLE IF EXISTS public.currency CASCADE;
+        </sql>
+
+        <createTable
+                catalogName="catalogavtozapchasti"
+                schemaName="public"
+                tableName="currency">
+
+            <column name="id_cur" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name_cur" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey
+                tableName="currency"
+                columnNames="id_cur"
+                constraintName="currency_pkey"/>
+
+    </changeSet>
+</databaseChangeLog>

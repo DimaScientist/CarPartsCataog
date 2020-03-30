@@ -28,12 +28,23 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="id_cur" type="int">
+                <constraints nullable="false"/>
+            </column>
+
         </createTable>
         
         <addPrimaryKey
                 tableName="country"
                 columnNames="countryid"
                 constraintName="country_pkey"/>
+
+        <addForeignKeyConstraint
+                baseTableName="country"
+                baseColumnNames="id_curr"
+                constraintName="fk_id_cur"
+                referencedTableName="id_cur"
+                referencedColumnNames="currency"/>
         
     </changeSet>
 </databaseChangeLog>
