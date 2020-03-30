@@ -117,7 +117,7 @@ public class JDBCAnswerSummary {
         double rrpAvg = 0;
         String SQL_SELECT = String.format("SELECT AVG(rrp)\n" +
                 "\tFROM public.price" +
-               "\tWHERE price.partnum != '%s';", this.partnum);
+               "\tWHERE price.partnum = '%s';", this.partnum);
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -142,7 +142,7 @@ public class JDBCAnswerSummary {
         double rrpRange = 0;
         String SQL_SELECT = String.format("SELECT AVG(rrp)\n" +
                 "\tFROM public.price" +
-                "\tWHERE price.partnum = '%s';", this.partnum);
+                "\tWHERE price.partnum != '%s';", this.partnum);
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
