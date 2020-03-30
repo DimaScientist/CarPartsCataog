@@ -16,19 +16,19 @@
                 catalogName="catalogavtozapchasti"
                 schemaName="public"
                 tableName="parts">
-            <column name="brantype" type="varchar(4)"/>
+            <column name="brantype" type="text"/>
 
-            <column name="brand" type="varchar(15)"/>
+            <column name="brand" type="text"/>
 
-            <column name="descr" type="varchar(30)"/>
+            <column name="descr" type="text"/>
 
-            <column name="arstat" type="varchar(10)"/>
+            <column name="arstat" type="text"/>
 
-            <column name="faltpartnum" type="varchar(13)">
+            <column name="faltpartnum" type="text">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="partnum" type="varchar(13)">
+            <column name="partnum" type="text">
                 <constraints nullable="false"/>
             </column>
 

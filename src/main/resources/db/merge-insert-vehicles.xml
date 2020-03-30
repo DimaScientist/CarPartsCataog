@@ -8,8 +8,8 @@
 
     <changeSet author="unknow" id="1">
         <sql>
-            INSERT INTO vehicles(brand, carid)
-                USING VALUES('{brand}', 1)
+            INSERT INTO vehicles(carid, brand)
+                USING VALUES(1, 'brand')
             ON CONFLICT(carid)
                 DO UPDATE SET
                         brand = EXCLUDED.brand;

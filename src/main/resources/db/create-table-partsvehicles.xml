@@ -17,7 +17,7 @@
                 schemaName="public"
                 tableName="partsvehicles">
 
-            <column name="altpartnum" type="varchar(13)">
+            <column name="altpartnum" type="text">
                 <constraints nullable="false"/>
             </column>
 

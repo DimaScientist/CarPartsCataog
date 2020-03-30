@@ -9,10 +9,11 @@
     <changeSet author="unknow" id="1">
         <sql>
 
-            INSERT INTO country (namecountry, code, countryid)
-                  VALUES('{Tunis}', '{TUN}', 11)
+            INSERT INTO country (countryid, id_curr, namecountry, code)
+                  VALUES(11, 1, 'Tunis', 'TUN')
             ON CONFLICT(countryid)
                     DO UPDATE SET
+                        id_curr = EXCLUDED.id_curr,
                         namecountry = EXCLUDED.namecountry,
                         code = EXCLUDED.code;
         </sql>

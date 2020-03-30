@@ -8,11 +8,12 @@
 
     <changeSet author="unknow" id="1">
         <sql>
-            INSERT INTO partsvehicles (carid, altpartnum)
-                USING VALUES(1, 'rge50y80')
-            ON CONFLICT(altpartnum)
-                DO UPDATE SET
-                        carid = EXCLUDED.carid;
+
+            INSERT INTO currency (id_cur, name_cur)
+            VALUES(11, 'AMD')
+            ON CONFLICT(id_cur)
+            DO UPDATE SET
+            name_cur = EXCLUDED.name_cur;
         </sql>
     </changeSet>
 </databaseChangeLog>

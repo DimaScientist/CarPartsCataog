@@ -9,7 +9,7 @@
     <changeSet author="unknow" id="1">
         <sql>
             INSERT INTO price(pridate, rrp, countryid, partnum)
-                USING VALUES('2020-11-11', 123.11, 1, '{93u4hty}')
+                USING VALUES('2020-11-11', 123.11, 1, 'efdg3u4hty')
             ON CONFLICT(countryid, partnum)
                 DO UPDATE SET
                          pridate = EXCLUDED.pridate,

@@ -8,7 +8,7 @@
 
     <changeSet author="unknow" id="insert-vehicles-1">
         <insert tableName="vehicles">
-            <column>carid={'bmw'}</column>
+            <column>carid='bmw'</column>
         </insert>
 
     </changeSet>

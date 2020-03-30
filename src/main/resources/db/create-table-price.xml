@@ -28,7 +28,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="partnum" type="varchar(13)">
+            <column name="partnum" type="text">
                 <constraints nullable="false"/>
             </column>
 

@@ -8,9 +8,9 @@
 
     <changeSet author="unknow" id="1">
         <sql>
-            INSERT INTO parts ( brantype, brand, descr, arstat, faltpartnum, partnum)
-                VALUES('{OEM}', '{BOSCH}', '{something}', '{NORMAL}',
-                        '{FN93428YH}', '{NMFWER93}')
+            INSERT INTO parts ( partnum, brantype, faltpartnum, brand, descr, arstat)
+                VALUES('NMFWER93', 'OEM', 'dfhdthj',
+                        'BOSCH', 'something', 'NORMAL')
             ON CONFLICT (partnum)
                 DO UPDATE SET
                         brantype = EXCLUDED.brantype,
