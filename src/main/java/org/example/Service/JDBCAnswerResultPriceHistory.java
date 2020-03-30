@@ -13,12 +13,13 @@ public class JDBCAnswerResultPriceHistory {
 
 
     public JDBCAnswerResultPriceHistory(String partnum){
-        resultTableList = new ArrayList<>();
+
         this.partnum = partnum;
 
     }
 
     private void createResultTableList(){
+        resultTableList = new ArrayList<>();
 
         PosgreSQLSpace postgres = new PosgreSQLSpace();
 
