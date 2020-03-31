@@ -11,7 +11,7 @@
         <loadData catalogName="catalogzapchasty"
                   commentLineStartsWith="A String"
                   encoding="UTF-8"
-                  file="/currency.csv"
+                  file="currency.csv"
                   quotchar="'"
                   relativeToChangelogFile="true"
                   schemaName="public"

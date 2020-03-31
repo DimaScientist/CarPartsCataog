@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <include file="D:/Programs/CarPartsCatalog/src/main/resources/db/load_data/currency/load-data-currency.xml"/>
+    <include file="D:/Programs/CarPartsCatalog/src/main/resources/db/migrations/load_data/currency/load-data-currency.xml"/>
 
 
 </databaseChangeLog>
