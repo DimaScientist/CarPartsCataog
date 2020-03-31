@@ -6,14 +6,14 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="unknow" id="1">
+    <changeSet author="unknow" id="2">
         <sql>
             INSERT INTO users(idusers, login, password)
-                USING VALUES(11, 123, 1234)
+                VALUES(11, 123, 1234)
             ON CONFLICT(idusers)
                 DO UPDATE SET
                         login = EXCLUDED.login,
-                        password = EXCLUDED.column3;
+                        password = EXCLUDED.password;
         </sql>
     </changeSet>
 </databaseChangeLog>

@@ -11,11 +11,11 @@
 
             INSERT INTO country (countryid, id_curr, namecountry, code)
                   VALUES(11, 1, 'Tunis', 'TUN')
-            ON CONFLICT(countryid)
-                    DO UPDATE SET
-                        id_curr = EXCLUDED.id_curr,
-                        namecountry = EXCLUDED.namecountry,
-                        code = EXCLUDED.code;
+                    ON CONFLICT(countryid)
+                        DO UPDATE SET
+                            id_curr = EXCLUDED.id_curr,
+                            namecountry = EXCLUDED.namecountry,
+                            code = EXCLUDED.code;
         </sql>
     </changeSet>
 </databaseChangeLog>

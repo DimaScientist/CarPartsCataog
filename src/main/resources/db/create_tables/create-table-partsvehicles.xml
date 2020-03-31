@@ -13,7 +13,7 @@
 
 
         <createTable
-                catalogName="catalogavtozapchasti"
+                catalogName="catalogzapchasty"
                 schemaName="public"
                 tableName="partsvehicles">
 

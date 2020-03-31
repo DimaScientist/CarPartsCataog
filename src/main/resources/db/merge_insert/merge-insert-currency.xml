@@ -6,14 +6,14 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="unknow" id="1">
+    <changeSet author="unknow" id="4">
         <sql>
 
             INSERT INTO currency (id_cur, name_cur)
-            VALUES(11, 'AMD')
-            ON CONFLICT(id_cur)
-            DO UPDATE SET
-            name_cur = EXCLUDED.name_cur;
+                VALUES(11, 'GER')
+                ON CONFLICT(id_cur)
+                    DO UPDATE SET
+                        name_cur = EXCLUDED.name_cur;
         </sql>
     </changeSet>
 </databaseChangeLog>

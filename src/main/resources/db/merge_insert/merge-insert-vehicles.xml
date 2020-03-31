@@ -6,10 +6,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="unknow" id="1">
+    <changeSet author="unknow" id="2">
         <sql>
             INSERT INTO vehicles(carid, brand)
-                USING VALUES(1, 'brand')
+                VALUES(1, 'brand')
             ON CONFLICT(carid)
                 DO UPDATE SET
                         brand = EXCLUDED.brand;

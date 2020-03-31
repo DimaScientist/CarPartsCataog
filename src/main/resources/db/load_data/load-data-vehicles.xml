@@ -8,10 +8,10 @@
 
     <changeSet author="unknow" id="1">
 
-        <loadData catalogName="catalogavtozapchasti"
+        <loadData catalogName="catalogzapchasty"
                   commentLineStartsWith="A String"
                   encoding="UTF-8"
-                  file="src/main/recources/db/changelog/vehicles.csv"
+                  file="../src/main/resources/db/changelog/files_for_db/vehicles.csv"
                   quotchar="'"
                   relativeToChangelogFile="true"
                   schemaName="public"

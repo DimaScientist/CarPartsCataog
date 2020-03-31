@@ -8,20 +8,20 @@
 
     <changeSet author="unknow" id="1">
 
-        <loadData catalogName="catalogavtozapchasti"
+        <loadData catalogName="catalogzapchasty"
                   commentLineStartsWith="A String"
                   encoding="UTF-8"
-                  file="src/main/recources/db/changelog/country.csv"
+                  file="D:/Programs/CarPartsCatalog/src/main/resources/db/changelog/files_for_db/country.csv"
                   quotchar="'"
                   relativeToChangelogFile="true"
                   schemaName="public"
                   separator=","
                   tableName="country"
                   usePreparedStatements="true" >
-            <column header="countryid" name="countryid" type="integer"/>
-            <column header="id_curr" name="id_curr" type="integer"/>
-            <column header="namecountry" name="namecountry" type="text"/>
-            <column header="code" name="code" type="text"/>
+            <column name="countryid" type="integer"/>
+            <column name="id_curr" type="integer"/>
+            <column name="namecountry" type="text"/>
+            <column name="code" type="text"/>
         </loadData>
     </changeSet>
 </databaseChangeLog>

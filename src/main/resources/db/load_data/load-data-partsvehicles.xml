@@ -8,18 +8,18 @@
 
     <changeSet author="unknow" id="1">
 
-        <loadData catalogName="catalogavtozapchasti"
+        <loadData catalogName="catalogzapchasty"
                   commentLineStartsWith="A String"
                   encoding="UTF-8"
-                  file="src/main/recources/db/changelog/partsvehicles.csv"
+                  file="D:/Programs/CarPartsCatalog/src/main/resources/db/changelog/files_for_db/partsvehicles.csv"
                   quotchar="'"
                   relativeToChangelogFile="true"
                   schemaName="public"
                   separator=","
                   tableName="partsvehicles"
                   usePreparedStatements="true" >
-            <column header="carid" name="carid" type="integer"/>
-            <column header="altpartnum" name="altpartnum" type="text"/>
+            <column name="carid" type="integer"/>
+            <column name="altpartnum" type="text"/>
         </loadData>
 
     </changeSet>

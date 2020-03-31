@@ -6,20 +6,20 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="unknow" id="1">
+    <changeSet author="unknow" id="5">
 
-        <loadData catalogName="catalogavtozapchasti"
+        <loadData catalogName="catalogzapchasty"
                   commentLineStartsWith="A String"
                   encoding="UTF-8"
-                  file="src/main/recources/db/changelog/currency.csv"
+                  file="D:/Programs/CarPartsCatalog/src/main/resources/db/changelog/files_for_db/currency.csv"
                   quotchar="'"
                   relativeToChangelogFile="true"
                   schemaName="public"
                   separator=","
                   tableName="currency"
                   usePreparedStatements="true">
-            <column header="id_curr" name="id_curr" type="integer"/>
-            <column header="name_cur" name="namecountry" type="text"/>
+            <column name="id_curr" type="integer"/>
+            <column name="namecountry" type="text"/>
         </loadData>
 
     </changeSet>

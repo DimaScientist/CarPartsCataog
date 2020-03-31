@@ -12,7 +12,7 @@
         </sql>
 
         <createTable
-                catalogName="catalogavtozapchasti"
+                catalogName="catalogzapchasty"
                 schemaName="public"
                 tableName="price">
 
