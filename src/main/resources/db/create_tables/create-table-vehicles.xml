@@ -16,7 +16,7 @@
                 schemaName="public"
                 tableName="vehicles">
 
-            <column name="carid" type="int">
+            <column name="carid" type="integer">
                 <constraints nullable="false"/>
             </column>
 

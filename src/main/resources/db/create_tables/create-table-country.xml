@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="unknow" id="create-table-country-1">
+    <changeSet author="unknow" id="create-table-country-3">
         <sql>
             DROP TABLE IF EXISTS public.country CASCADE;
         </sql>
@@ -24,11 +24,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="countryid" type="int">
+            <column name="countryid" type="integer">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="id_cur" type="int">
+            <column name="id_cur" type="integer">
                 <constraints nullable="false"/>
             </column>
 
@@ -41,10 +41,10 @@
 
         <addForeignKeyConstraint
                 baseTableName="country"
-                baseColumnNames="id_curr"
+                baseColumnNames="id_cur"
                 constraintName="fk_id_cur"
-                referencedTableName="id_cur"
-                referencedColumnNames="currency"/>
+                referencedTableName="currency"
+                referencedColumnNames="id_cur"/>
         
     </changeSet>
 </databaseChangeLog>

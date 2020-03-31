@@ -11,17 +11,19 @@
         <loadData catalogName="catalogzapchasty"
                   commentLineStartsWith="A String"
                   encoding="UTF-8"
-                  file="D:/Programs/CarPartsCatalog/src/main/resources/db/changelog/files_for_db/price.csv"
+                  file="parts.csv"
                   quotchar="'"
                   relativeToChangelogFile="true"
                   schemaName="public"
                   separator=","
-                  tableName="price"
+                  tableName="parts"
                   usePreparedStatements="true">
-            <column name="countryid" type="integer"/>
-            <column name="rrp" type="numeric"/>
-            <column name="pridate" type="date"/>
             <column name="partnum" type="text"/>
+            <column name="brantype" type="text"/>
+            <column name="faltpartnum" type="text"/>
+            <column name="brand" type="text"/>
+            <column name="descr" type="text"/>
+            <column name="arstat" type="text"/>
         </loadData>
 
     </changeSet>

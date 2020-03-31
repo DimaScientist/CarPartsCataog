@@ -11,15 +11,15 @@
         <loadData catalogName="catalogzapchasty"
                   commentLineStartsWith="A String"
                   encoding="UTF-8"
-                  file="D:/Programs/CarPartsCatalog/src/main/resources/db/changelog/files_for_db/partsvehicles.csv"
+                  file="vehicles.csv"
                   quotchar="'"
                   relativeToChangelogFile="true"
                   schemaName="public"
                   separator=","
-                  tableName="partsvehicles"
+                  tableName="vehicles"
                   usePreparedStatements="true" >
-            <column name="carid" type="integer"/>
-            <column name="altpartnum" type="text"/>
+            <column header="carid" name="carid" type="integer"/>
+            <column header="brand" name="brand" type="text"/>
         </loadData>
 
     </changeSet>

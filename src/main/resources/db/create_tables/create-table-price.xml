@@ -24,7 +24,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="countryid" type="int">
+            <column name="countryid" type="integer">
                 <constraints nullable="false"/>
             </column>
 
