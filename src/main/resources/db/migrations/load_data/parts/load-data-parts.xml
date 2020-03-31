@@ -18,12 +18,12 @@
                   separator=","
                   tableName="parts"
                   usePreparedStatements="true">
-            <column name="partnum" type="text"/>
-            <column name="brantype" type="text"/>
-            <column name="faltpartnum" type="text"/>
-            <column name="brand" type="text"/>
-            <column name="descr" type="text"/>
-            <column name="arstat" type="text"/>
+            <column header="partnum" name="partnum" type="STRING"/>
+            <column header="brantype" name="brantype" type="STRING"/>
+            <column header="faltpartnum" name="faltpartnum" type="STRING"/>
+            <column header="brand" name="brand" type="STRING"/>
+            <column header="descr" name="descr" type="STRING"/>
+            <column header="arstat" name="arstat" type="STRING"/>
         </loadData>
 
     </changeSet>

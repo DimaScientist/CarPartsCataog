@@ -19,8 +19,8 @@
                   tableName="currency"
                   usePreparedStatements="true">
 
-            <column name="id_curr" type="integer"/>
-            <column name="namecountry" type="text"/>
+            <column header="id_cur" name="id_cur" type="NUMERIC"/>
+            <column header="name_cur" name="name_cur" type="STRING"/>
 
         </loadData>
 

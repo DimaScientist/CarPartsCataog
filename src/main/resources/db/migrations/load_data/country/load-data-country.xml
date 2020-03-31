@@ -18,10 +18,10 @@
                   separator=","
                   tableName="country"
                   usePreparedStatements="true" >
-            <column name="countryid" type="integer"/>
-            <column name="id_curr" type="integer"/>
-            <column name="namecountry" type="text"/>
-            <column name="code" type="text"/>
+            <column header="countryid" name="countryid" type="NUMERIC"/>
+            <column header="id_curr" name="id_cur" type="NUMERIC"/>
+            <column header="namecountry" name="namecountry" type="STRING"/>
+            <column header="code" name="code" type="STRING"/>
         </loadData>
     </changeSet>
 </databaseChangeLog>

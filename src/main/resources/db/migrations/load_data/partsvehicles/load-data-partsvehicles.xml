@@ -18,8 +18,8 @@
                   separator=","
                   tableName="partsvehicles"
                   usePreparedStatements="true" >
-            <column name="carid" type="integer"/>
-            <column name="altpartnum" type="text"/>
+            <column header="carid" name="carid" type="NUMERIC"/>
+            <column header="altpartnum" name="altpartnum" type="STRING"/>
         </loadData>
 
     </changeSet>

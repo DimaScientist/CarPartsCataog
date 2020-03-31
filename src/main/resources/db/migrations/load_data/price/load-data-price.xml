@@ -18,10 +18,10 @@
                   separator=","
                   tableName="price"
                   usePreparedStatements="true">
-            <column name="countryid" type="integer"/>
-            <column name="rrp" type="numeric"/>
-            <column name="pridate" type="date"/>
-            <column name="partnum" type="text"/>
+            <column header="countryid" name="countryid" type="NUMERIC"/>
+            <column header="rrp" name="rrp" type="NUMERIC"/>
+            <column header="pridate" name="pridate" type="DATE"/>
+            <column header="partnum" name="partnum" type="STRING"/>
         </loadData>
 
     </changeSet>
