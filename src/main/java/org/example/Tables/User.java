@@ -3,15 +3,32 @@ package org.example.Tables;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
 
-
 @Entity
-@Table(name = "user")
+@Table(name="user")
 public class User implements UserDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Size(min=2, message = "Не меньше 5 знаков")
+    private String username;
+
+    @Size(min=2, message = "Не меньше 5 знаков")
+    private String password;
+
+    @Transient
+    private String passwordConfirm;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles;
+
+    public User(){}
 
     @Override
     public String getUsername() {
@@ -22,15 +39,7 @@ public class User implements UserDetails {
         this.username = username;
     }
 
-    private String username;
 
-    private String password;
-
-    private String passwordConfirm;
-
-    private Set<Role> roles;
-
-    public User(){}
 
     public User(String login, String password) {
         this.username = login;

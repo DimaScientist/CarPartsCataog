@@ -2,17 +2,19 @@ package org.example.Tables;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "role")
 public class Role implements GrantedAuthority{
 
-
+    @Id
     private Long id;
     private String name;
+
+    @Transient
+    @ManyToMany(mappedBy = "user_role")
     private Set<User> users;
 
 
