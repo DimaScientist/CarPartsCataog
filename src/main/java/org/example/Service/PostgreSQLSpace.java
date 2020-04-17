@@ -1,6 +1,6 @@
 package org.example.Service;
 
-public class PosgreSQLSpace {
+public class PostgreSQLSpace {
 
     private final String passsword = "1234";
     private final String postgresUser = "postgres";

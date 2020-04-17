@@ -21,7 +21,7 @@ public class JDBCAnswerPartsVehicles {
     private void createListPartsVehicles(){
         partsVehiclesList = new ArrayList<>();
 
-        PosgreSQLSpace postgres = new PosgreSQLSpace();
+        PostgreSQLSpace postgres = new PostgreSQLSpace();
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());

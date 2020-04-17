@@ -1,7 +1,5 @@
 package org.example.Service;
 
-import org.example.Tables.Price;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +17,7 @@ public class JDBCPartNumber {
     private void createPriceList(){
         partnumList = new ArrayList<>();
 
-        PosgreSQLSpace postgres = new PosgreSQLSpace();
+        PostgreSQLSpace postgres = new PostgreSQLSpace();
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());

@@ -21,7 +21,7 @@ public class JDBCAnswerResultPriceHistory {
     private void createResultTableList(){
         resultTableList = new ArrayList<>();
 
-        PosgreSQLSpace postgres = new PosgreSQLSpace();
+        PostgreSQLSpace postgres = new PostgreSQLSpace();
 
 
         String SQL_SELECT = String.format(

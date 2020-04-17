@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
 
 public class JDBCAnswerSummary {
     private Summary summary;
-    private PosgreSQLSpace postgres;
+    private PostgreSQLSpace postgres;
     private String partnum;
 
     public Summary getListSummary() {
@@ -19,7 +19,7 @@ public class JDBCAnswerSummary {
     }
 
     public  JDBCAnswerSummary(String partnum){
-        postgres = new PosgreSQLSpace();
+        postgres = new PostgreSQLSpace();
         this.partnum = partnum;
         summary = new Summary();
     }

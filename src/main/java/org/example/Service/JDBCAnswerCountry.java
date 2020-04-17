@@ -20,7 +20,7 @@ public class JDBCAnswerCountry {
 
     private void createListCountries(){
         ListCountries = new ArrayList<>();
-        PosgreSQLSpace postgres = new PosgreSQLSpace();
+        PostgreSQLSpace postgres = new PostgreSQLSpace();
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());

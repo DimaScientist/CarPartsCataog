@@ -1,7 +1,6 @@
 package org.example.Service;
 
 import org.example.Tables.Currency;
-import org.example.Tables.PartsVehicles;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,7 +21,7 @@ public class JDBCAnswerCurrency {
     private void createCurrencyList(){
         currencyList = new ArrayList<>();
 
-        PosgreSQLSpace postgres = new PosgreSQLSpace();
+        PostgreSQLSpace postgres = new PostgreSQLSpace();
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
