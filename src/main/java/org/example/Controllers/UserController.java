@@ -32,7 +32,7 @@ public class UserController {
         return jdbcAnswerUser.FindUserByLoginAndPassword(login, password);
     }
 
-    @DeleteMapping("/delete/{login}"., m)
+    @DeleteMapping("/delete/{login}")
     public ResponseEntity<HttpStatus> DeleteUser(@PathVariable("login") String login){
         try{
             JDBCAnswerUser jdbcAnswerUser = new JDBCAnswerUser();
