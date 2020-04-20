@@ -2,9 +2,9 @@ package org.example.Controllers;
 
 
 import org.example.Service.JDBCAnswerUser;
-import org.example.Tables.Answer;
 import org.example.Tables.User;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,20 +36,23 @@ public class UserController {
         return jdbcAnswerUser.FindUserByLogin(login);
     }
 
-    @GetMapping("/find/{login}/{password}")
+    @GetMapping(value = "/find/{login}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
     // выдать юзера с токеном
     // { status: 200, body }
-    public Answer AuthorisationUser(@PathVariable("login") String login, @PathVariable("password") String password){
+    public User AuthorisationUser(@PathVariable("login") String login, @PathVariable("password") String password){
+
+        User user = new User();
         try {
             JDBCAnswerUser jdbcAnswerUser = new JDBCAnswerUser();
-            User user = jdbcAnswerUser.FindUserByLoginAndPassword(login, password);
-            return new Answer(200, user);
+
+            user = jdbcAnswerUser.FindUserByLoginAndPassword(login, password);
+
         }
         catch (Exception e){
             System.err.println(e.getMessage());
-            return new Answer(200, null);
         }
 
+        return user;
     }
 
     @GetMapping("/delete/{login}")

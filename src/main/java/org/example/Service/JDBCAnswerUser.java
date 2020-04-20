@@ -140,7 +140,7 @@ public class JDBCAnswerUser {
 
     public User FindUserByLoginAndPassword(String login, String password){
         PostgreSQLSpace postgres = new PostgreSQLSpace();
-        String SQL_SELECT_COUNT_USERS_BY_LOGIN_AND_PASSWORD = String.format("SELECT login, token, lastname, firstname " +
+        String SQL_SELECT_COUNT_USERS_BY_LOGIN_AND_PASSWORD = String.format("SELECT id_user, login, token, lastname, firstname " +
                 "FROM public.user WHERE login = '%s' AND password = '%s'", login, password);
 
         User user = new User();
@@ -150,14 +150,21 @@ public class JDBCAnswerUser {
             Statement statement = conn.createStatement()){
             ResultSet resultSet = statement.executeQuery( SQL_SELECT_COUNT_USERS_BY_LOGIN_AND_PASSWORD);
 
-            String log = resultSet.getString("login");
-            String token = resultSet.getString("token");
-            String firstName = resultSet.getString("firstname");
-            String lastName = resultSet.getString("lastname");
-            user.setUsername(log);
-            user.setToken(token);
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
+            while (resultSet.next()) {
+
+                Long idUser = resultSet.getLong("id_user");
+
+                String log = resultSet.getString("login");
+                String token = resultSet.getString("token");
+                String firstName = resultSet.getString("firstname");
+                String lastName = resultSet.getString("lastname");
+
+                user.setId(idUser);
+                user.setUsername(log);
+                user.setToken(token);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+            }
 
         } catch (Exception e){
             System.err.println(e.getMessage());
