@@ -1,9 +1,8 @@
 package org.example.Service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import org.example.Tables.User;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class JDBCAnswerUser {
         String SQL_SELECT_COUNT_USERS_BY_LOGIN = String.format("SELECT count(id_user) " +
                 "FROM public.user WHERE login = '%s'", login);
 
-        Integer count = 0;
+        int count = 0;
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -69,7 +68,7 @@ public class JDBCAnswerUser {
         String SQL_SELECT_COUNT_USERS_BY_LOGIN = "SELECT Max(id_user) " +
                 "FROM public.user";
 
-        Integer count = 0;
+        int count = 0;
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -93,14 +92,20 @@ public class JDBCAnswerUser {
             if(CountUsersByLogin(login) == 0){
 
                 PostgreSQLSpace postgres = new PostgreSQLSpace();
-                String SQL_INSERT_USER = String.format("INSERT INTO public.user(\n" +
-                        "\tlogin, password, id_user)\n" +
-                        "\tVALUES ('%s', '%s', %d);", login, password, MaxIdUsers() + 1);
+                String SQL_INSERT_USER = "INSERT INTO public.user(" +
+                        "login, password, id_user) " +
+                        "VALUES (?, ?, ?);";
 
                 try(Connection conn = DriverManager.getConnection(
                         postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
-                    Statement statement = conn.createStatement()){
-                    statement.executeQuery(SQL_INSERT_USER);
+                    PreparedStatement preparedStatement =
+                            conn.prepareStatement(SQL_INSERT_USER)){
+
+                    preparedStatement.setString(1, login);
+                    preparedStatement.setString(2, password);
+                    preparedStatement.setInt(3, MaxIdUsers() + 1);
+
+                    preparedStatement.executeUpdate();
 
                     return "Succeseful registration";
 
@@ -126,7 +131,7 @@ public class JDBCAnswerUser {
         String SQL_SELECT_COUNT_USERS_BY_LOGIN_AND_PASSWORD = String.format("SELECT count(id_user) " +
                 "FROM public.user WHERE login = '%s' AND password = '%s'", login, password);
 
-        Integer count = 0;
+        int count = 0;
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -154,18 +159,46 @@ public class JDBCAnswerUser {
 
     public void DeleteUser(String login){
         PostgreSQLSpace postgres = new PostgreSQLSpace();
-        String SQL_DELETE_USER_BY_LOGIN = String.format("DELETE FROM public.user " +
-                "WHERE login = '%S'", login);
+        String SQL_DELETE_USER_BY_LOGIN = "DELETE FROM public.user " +
+                "WHERE login = ?;";
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
-            Statement statement = conn.createStatement()){
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement(SQL_DELETE_USER_BY_LOGIN)){
 
-            statement.executeQuery(SQL_DELETE_USER_BY_LOGIN);
-
+            preparedStatement.setString(1, login );
+            preparedStatement.executeUpdate();
 
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
+    }
+
+
+    public List<User> FindUserByLogin(String login){
+        PostgreSQLSpace postgres = new PostgreSQLSpace();
+        String SELECT_SQL_USERS_BY_LOGIN = String.format("SELECT login, password FROM public.user" +
+                " WHERE login = '%s'", login);
+        List<User> listUsers = new ArrayList<>();
+        try(Connection conn = DriverManager.getConnection(
+                postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
+            Statement statement = conn.createStatement()){
+
+            ResultSet resultSet = statement.executeQuery(SELECT_SQL_USERS_BY_LOGIN);
+
+            while (resultSet.next()){
+               String log = resultSet.getString("login");
+               String password = resultSet.getString("password");
+               User user = new User();
+               user.setPassword(password);
+               user.setUsername(log);
+               listUsers.add(user);
+            }
+        }
+        catch (Exception ex){
+            System.err.println(ex.getMessage());
+        }
+        return listUsers;
     }
 }

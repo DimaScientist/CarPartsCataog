@@ -2,6 +2,7 @@ package org.example.Controllers;
 
 
 import org.example.Service.JDBCAnswerUser;
+import org.example.Tables.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +27,19 @@ public class UserController {
         return jdbcAnswerUser.InsertUser(login, password);
     }
 
+    @GetMapping("/user/{login}")
+    public List<User> GetUserByLogin(@PathVariable("login") String login){
+        JDBCAnswerUser jdbcAnswerUser = new JDBCAnswerUser();
+        return jdbcAnswerUser.FindUserByLogin(login);
+    }
+
     @GetMapping("/find/{login}/{password}")
     public String AuthorisationUser(@PathVariable("login") String login, @PathVariable("password") String password){
         JDBCAnswerUser jdbcAnswerUser = new JDBCAnswerUser();
         return jdbcAnswerUser.FindUserByLoginAndPassword(login, password);
     }
 
-    @DeleteMapping("/delete/{login}")
+    @GetMapping("/delete/{login}")
     public ResponseEntity<HttpStatus> DeleteUser(@PathVariable("login") String login){
         try{
             JDBCAnswerUser jdbcAnswerUser = new JDBCAnswerUser();
