@@ -103,8 +103,8 @@ public class JDBCAnswerUser {
 
                 PostgreSQLSpace postgres = new PostgreSQLSpace();
                 String SQL_INSERT_USER = "INSERT INTO public.user(" +
-                        "login, password, id_user, lastname, firstname ) " +
-                        "VALUES (?, ?, ?, ?, ?т);";
+                        "login, password, id_user, lastname, firstname, token ) " +
+                        "VALUES (?, ?, ?, ?, ?, 'fake-jwt-token');";
 
                 try(Connection conn = DriverManager.getConnection(
                         postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
