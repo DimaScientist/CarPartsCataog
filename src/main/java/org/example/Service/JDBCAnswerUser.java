@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCAnswerUser {
-    private List<String> allUsersList;
+    private List<User> allUsersList;
 
-    String SQL_SELECT_ALL_USERS = "SELECT login " +
+    String SQL_SELECT_ALL_USERS = "SELECT login, token, lastname, firstname " +
             "FROM public.user";
 
 
@@ -27,9 +27,19 @@ public class JDBCAnswerUser {
 
             while (resultSet.next()){
 
-                String login = resultSet.getString("login");
+                User user = new User();
 
-                allUsersList.add(login);
+                String login = resultSet.getString("login");
+                String token = resultSet.getString("token");
+                String firstName = resultSet.getString("firstname");
+                String lastName = resultSet.getString("lastname");
+
+                user.setLastName(lastName);
+                user.setFirstName(firstName);
+                user.setToken(token);
+                user.setUsername(login );
+
+                allUsersList.add(user);
 
             }
 
@@ -88,13 +98,13 @@ public class JDBCAnswerUser {
         return  count;
     }
 
-    public String InsertUser(String login, String password){
+    public String InsertUser(String login, String password, String firstName, String lastName){
             if(CountUsersByLogin(login) == 0){
 
                 PostgreSQLSpace postgres = new PostgreSQLSpace();
                 String SQL_INSERT_USER = "INSERT INTO public.user(" +
-                        "login, password, id_user) " +
-                        "VALUES (?, ?, ?);";
+                        "login, password, id_user, lastname, firstname ) " +
+                        "VALUES (?, ?, ?, ?, ?т);";
 
                 try(Connection conn = DriverManager.getConnection(
                         postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -104,6 +114,8 @@ public class JDBCAnswerUser {
                     preparedStatement.setString(1, login);
                     preparedStatement.setString(2, password);
                     preparedStatement.setInt(3, MaxIdUsers() + 1);
+                    preparedStatement.setString(4, lastName);
+                    preparedStatement.setString(5, firstName);
 
                     preparedStatement.executeUpdate();
 
@@ -120,41 +132,38 @@ public class JDBCAnswerUser {
             }
      }
 
-    public List<String> getAllUsersList() {
+    public List<User> getAllUsersList() {
         createUsersList();
         return allUsersList;
     }
 
 
-    private Integer CountUsersByLoginAndPassword(String login, String password){
+    public User FindUserByLoginAndPassword(String login, String password){
         PostgreSQLSpace postgres = new PostgreSQLSpace();
-        String SQL_SELECT_COUNT_USERS_BY_LOGIN_AND_PASSWORD = String.format("SELECT count(id_user) " +
+        String SQL_SELECT_COUNT_USERS_BY_LOGIN_AND_PASSWORD = String.format("SELECT login, token, lastname, firstname " +
                 "FROM public.user WHERE login = '%s' AND password = '%s'", login, password);
 
-        int count = 0;
+        User user = new User();
 
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
             Statement statement = conn.createStatement()){
             ResultSet resultSet = statement.executeQuery( SQL_SELECT_COUNT_USERS_BY_LOGIN_AND_PASSWORD);
 
-            while (resultSet.next()){
-
-                count = resultSet.getInt("count");
-            }
-
+            String log = resultSet.getString("login");
+            String token = resultSet.getString("token");
+            String firstName = resultSet.getString("firstname");
+            String lastName = resultSet.getString("lastname");
+            user.setUsername(log);
+            user.setToken(token);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
 
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
 
-        return  count;
-    }
-
-    public String FindUserByLoginAndPassword(String login, String password){
-        Integer count = CountUsersByLoginAndPassword(login, password);
-        if(count != 0) return "Succeseful authorisation";
-        else return "Failled authorisation";
+        return  user;
     }
 
     public void DeleteUser(String login){
@@ -178,7 +187,7 @@ public class JDBCAnswerUser {
 
     public List<User> FindUserByLogin(String login){
         PostgreSQLSpace postgres = new PostgreSQLSpace();
-        String SELECT_SQL_USERS_BY_LOGIN = String.format("SELECT login, password FROM public.user" +
+        String SELECT_SQL_USERS_BY_LOGIN = String.format("SELECT login, token FROM public.user" +
                 " WHERE login = '%s'", login);
         List<User> listUsers = new ArrayList<>();
         try(Connection conn = DriverManager.getConnection(
@@ -189,9 +198,9 @@ public class JDBCAnswerUser {
 
             while (resultSet.next()){
                String log = resultSet.getString("login");
-               String password = resultSet.getString("password");
+               String token = resultSet.getString("token");
                User user = new User();
-               user.setPassword(password);
+               user.setToken(token);
                user.setUsername(log);
                listUsers.add(user);
             }

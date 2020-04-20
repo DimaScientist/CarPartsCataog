@@ -5,14 +5,28 @@ public class User{
     private Long id;
 
     private String username;
-    private String password;
+    private String token;
+    private String firstName;
+    private String lastName;
 
     public User(){}
 
-    public User(String login, String password) {
-        this.username = login;
-        this.password = password;
+    public String getFirstName() {
+        return firstName;
     }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
 
     public String getUsername() {
         return username;
@@ -22,12 +36,12 @@ public class User{
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getToken() {
+        return token;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setToken(String token) {
+        this.token = token;
     }
 
 
