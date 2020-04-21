@@ -1,8 +1,5 @@
 package org.example.Service;
 
-import com.fasterxml.uuid.EthernetAddress;
-import com.fasterxml.uuid.UUIDTimer;
-import com.fasterxml.uuid.impl.TimeBasedGenerator;
 import org.example.Tables.User;
 
 import java.sql.*;
