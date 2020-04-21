@@ -15,8 +15,6 @@ import java.util.List;
 @RequestMapping("/authorisation")
 public class UserController {
 
-    // добавить токен
-
     @GetMapping("/users")
     public List<User> GetAllUsers(){
         JDBCAnswerUser jdbcAnswerUser = new JDBCAnswerUser();
@@ -29,16 +27,9 @@ public class UserController {
         JDBCAnswerUser jdbcAnswerUser = new JDBCAnswerUser();
         return jdbcAnswerUser.InsertUser(login, password, firstname, lastname);
     }
-
-    @GetMapping("/user/{login}")
-    public List<User> GetUserByLogin(@PathVariable("login") String login){
-        JDBCAnswerUser jdbcAnswerUser = new JDBCAnswerUser();
-        return jdbcAnswerUser.FindUserByLogin(login);
-    }
-
+    
     @GetMapping(value = "/find/{login}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
     // выдать юзера с токеном
-    // { status: 200, body }
     public User AuthorisationUser(@PathVariable("login") String login, @PathVariable("password") String password){
 
         User user = new User();
@@ -51,7 +42,6 @@ public class UserController {
         catch (Exception e){
             System.err.println(e.getMessage());
         }
-
         return user;
     }
 
@@ -65,7 +55,6 @@ public class UserController {
         catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
-
     }
 
 }

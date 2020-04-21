@@ -1,5 +1,8 @@
 package org.example.Service;
 
+import com.fasterxml.uuid.EthernetAddress;
+import com.fasterxml.uuid.UUIDTimer;
+import com.fasterxml.uuid.impl.TimeBasedGenerator;
 import org.example.Tables.User;
 
 import java.sql.*;
@@ -104,7 +107,12 @@ public class JDBCAnswerUser {
                 PostgreSQLSpace postgres = new PostgreSQLSpace();
                 String SQL_INSERT_USER = "INSERT INTO public.user(" +
                         "login, password, id_user, lastname, firstname, token ) " +
-                        "VALUES (?, ?, ?, ?, ?, 'fake-jwt-token');";
+                        "VALUES (?, ?, ?, ?, ?, ?);";
+
+                TimeBasedGenerator uuidGenerator = new TimeBasedGenerator(EthernetAddress.fromInterface(),
+                        (UUIDTimer) null);
+                String token = uuidGenerator.generate().toString();
+
 
                 try(Connection conn = DriverManager.getConnection(
                         postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -116,19 +124,21 @@ public class JDBCAnswerUser {
                     preparedStatement.setInt(3, MaxIdUsers() + 1);
                     preparedStatement.setString(4, lastName);
                     preparedStatement.setString(5, firstName);
+                    preparedStatement.setString(6, token);
 
                     preparedStatement.executeUpdate();
 
-                    return "Succeseful registration";
+                    return "";
 
 
                 } catch (Exception e){
                     System.err.println(e.getMessage());
-                    return "Failled registration";
+                    return "Error";
                 }
             }
             else{
-                return "Failled registration";
+                String answer = String.format("Username %s is already taken",login);
+                return answer;
             }
      }
 
@@ -192,11 +202,11 @@ public class JDBCAnswerUser {
     }
 
 
-    public List<User> FindUserByLogin(String login){
+    public User FindUserByLogin(String login){
         PostgreSQLSpace postgres = new PostgreSQLSpace();
         String SELECT_SQL_USERS_BY_LOGIN = String.format("SELECT login, token FROM public.user" +
                 " WHERE login = '%s'", login);
-        List<User> listUsers = new ArrayList<>();
+        User user = new User();
         try(Connection conn = DriverManager.getConnection(
                 postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
             Statement statement = conn.createStatement()){
@@ -206,15 +216,14 @@ public class JDBCAnswerUser {
             while (resultSet.next()){
                String log = resultSet.getString("login");
                String token = resultSet.getString("token");
-               User user = new User();
+
                user.setToken(token);
                user.setUsername(log);
-               listUsers.add(user);
             }
         }
         catch (Exception ex){
             System.err.println(ex.getMessage());
         }
-        return listUsers;
+        return user;
     }
 }
