@@ -8,6 +8,7 @@ import org.example.Tables.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class JDBCAnswerUser {
     private List<User> allUsersList;
@@ -120,7 +121,12 @@ public class JDBCAnswerUser {
                     preparedStatement.setInt(3, MaxIdUsers() + 1);
                     preparedStatement.setString(4, lastName);
                     preparedStatement.setString(5, firstName);
-                    preparedStatement.setString(6, "fake-jwt-token");
+
+                    String token = UUID.randomUUID().toString() + "-jwt-" + login;
+
+                    //preparedStatement.setString(6, "fake-jwt-token");
+                    preparedStatement.setString(6,token);
+
 
                     preparedStatement.executeUpdate();
 
@@ -133,8 +139,7 @@ public class JDBCAnswerUser {
                 }
             }
             else{
-                String answer = String.format("Username %s is already taken",login);
-                return answer;
+                return String.format("Username %s is already taken",login);
             }
      }
 
