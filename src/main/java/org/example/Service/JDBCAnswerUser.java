@@ -109,10 +109,6 @@ public class JDBCAnswerUser {
                         "login, password, id_user, lastname, firstname, token ) " +
                         "VALUES (?, ?, ?, ?, ?, ?);";
 
-                TimeBasedGenerator uuidGenerator = new TimeBasedGenerator(EthernetAddress.fromInterface(),
-                        (UUIDTimer) null);
-                String token = uuidGenerator.generate().toString();
-
 
                 try(Connection conn = DriverManager.getConnection(
                         postgres.getUrlAdress(), postgres.getPostgresUser(), postgres.getPasssword());
@@ -124,7 +120,7 @@ public class JDBCAnswerUser {
                     preparedStatement.setInt(3, MaxIdUsers() + 1);
                     preparedStatement.setString(4, lastName);
                     preparedStatement.setString(5, firstName);
-                    preparedStatement.setString(6, token);
+                    preparedStatement.setString(6, "fake-jwt-token");
 
                     preparedStatement.executeUpdate();
 
