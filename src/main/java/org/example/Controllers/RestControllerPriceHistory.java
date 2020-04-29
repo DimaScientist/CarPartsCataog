@@ -37,10 +37,10 @@ public class RestControllerPriceHistory {
     private List<ResultTable> PagingDataResul(List<ResultTable> resultTables, int pageId, int numData){
         try {
             int length = resultTables.size();
-            if (pageId * numData >= length)
+            if (numData >= length)
                 return resultTables;
             else {
-                if(pageId * numData < (length - (pageId - 1) * numData))
+                if(numData < (length - (pageId - 1) * numData))
                     return resultTables.subList((pageId - 1) * numData, pageId * numData);
                 else
                     return resultTables.subList((pageId - 1) * numData, length);
