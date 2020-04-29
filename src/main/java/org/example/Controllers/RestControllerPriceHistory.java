@@ -40,7 +40,7 @@ public class RestControllerPriceHistory {
             if (pageId * numData >= length)
                 return resultTables;
             else {
-                if(pageId * numData < length)
+                if(pageId * numData < (length - (pageId - 1) * numData))
                     return resultTables.subList((pageId - 1) * numData, pageId * numData);
                 else
                     return resultTables.subList((pageId - 1) * numData, length);
