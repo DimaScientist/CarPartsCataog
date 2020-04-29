@@ -24,10 +24,27 @@ import java.util.List;
 @RequestMapping("/db")
 public class RestControllerPriceHistory {
 
-    @GetMapping(value = "/{partnum}", produces = "application/json")
+    @GetMapping(value = "/{pageId}/{numData}/{partnum}", produces = "application/json")
     public List<ResultTable> getData(
+            @PathVariable Integer pageId,
+            @PathVariable Integer numData,
             @PathVariable String partnum){
         JDBCAnswerResultPriceHistory jdbcAnswer = new JDBCAnswerResultPriceHistory(partnum);
-        return jdbcAnswer.getResultTableList();
+        return  PagingDataResul(jdbcAnswer.getResultTableList(), pageId, numData);
+    }
+
+    private List<ResultTable> PagingDataResul(List<ResultTable> resultTables, int pageId, int numData){
+        try {
+            int length = resultTables.size();
+            if (pageId * numData >= length)
+                return resultTables.subList((pageId - 1) * numData, length);
+            else {
+                return resultTables.subList((pageId - 1) * numData, pageId * numData);
+            }
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultTables;
     }
 }
