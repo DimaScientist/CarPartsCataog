@@ -4,6 +4,7 @@ import org.example.Service.JDBCAnswerResultPriceHistory;
 import org.example.Tables.ResultTable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*Контроллер для PriceHistory:
@@ -37,9 +38,12 @@ public class RestControllerPriceHistory {
         try {
             int length = resultTables.size();
             if (pageId * numData >= length)
-                return resultTables.subList((pageId - 1) * numData, length);
+                return resultTables;
             else {
-                return resultTables.subList((pageId - 1) * numData, pageId * numData);
+                if(pageId * numData < length)
+                    return resultTables.subList((pageId - 1) * numData, pageId * numData);
+                else
+                    return resultTables.subList((pageId - 1) * numData, length);
             }
         }
         catch (Exception ex){
