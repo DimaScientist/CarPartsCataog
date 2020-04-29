@@ -5,7 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <include file="D:/Programs/CarPartsCatalog/src/main/resources/db/migrations/create_table/create-table-price.xml"/>
+    <include file="db\migrations\create_tables\create-table-price.xml"/>
+    <include file="db\migrations\load_data\price\load-data-price.xml"/>
 
 
 </databaseChangeLog>
