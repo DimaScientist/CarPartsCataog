@@ -6,6 +6,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
 
+    <include file="db\migrations\create_tables\create-table-price.xml"/>
     <include file="db\migrations\load_data\price\load-data-price.xml"/>
 
 

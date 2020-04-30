@@ -9,7 +9,7 @@ public class JDBCPartNumber {
     private List<String> partnumList;
     private static final String SQL_SELECT = "SELECT "+
             "partnum " +
-            "FROM price;";
+            "FROM public.parts;";
 
     public JDBCPartNumber(){
     }
