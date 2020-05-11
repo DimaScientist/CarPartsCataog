@@ -7,6 +7,4 @@
 
     <include file="db\migrations\create_tables\create-table-price.xml"/>
     <include file="db\migrations\load_data\price\load-data-price.xml"/>
-
-
 </databaseChangeLog>

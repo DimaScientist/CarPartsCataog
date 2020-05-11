@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="unknow" id="create-table-price-3">
+    <changeSet author="unknow" id="create-table-price-5">
         <sql>
             DROP TABLE IF EXISTS public.price CASCADE;
         </sql>
