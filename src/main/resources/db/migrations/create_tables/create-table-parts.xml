@@ -41,10 +41,10 @@
 
         <addForeignKeyConstraint
                 baseTableName="parts"
-                baseColumnNames="altpartnum"
+                baseColumnNames="faltpartnum"
                 constraintName="foreign_key_altpartnum"
-                referencedTableName="altpartnum"
-                referencedColumnNames="partsvehicles"/>
+                referencedTableName="partsvehicles"
+                referencedColumnNames="altpartnum"/>
 
     </changeSet>
 </databaseChangeLog>

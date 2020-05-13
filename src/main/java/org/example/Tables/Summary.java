@@ -7,7 +7,7 @@ public class Summary {
     private int wholesaler;
 
     private String rrpAvg;
-    private double rrpRange;
+    private String rrpRange;
 
     public int getOeParts() {
         return oeParts;
@@ -41,11 +41,11 @@ public class Summary {
         this.rrpAvg = rrpAvg;
     }
 
-    public double getRrpRange() {
+    public String getRrpRange() {
         return rrpRange;
     }
 
-    public void setRrpRange(double rrpRange) {
+    public void setRrpRange(String rrpRange) {
         this.rrpRange = rrpRange;
     }
 

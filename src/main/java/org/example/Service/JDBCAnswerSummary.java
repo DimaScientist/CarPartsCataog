@@ -126,7 +126,7 @@ public class JDBCAnswerSummary {
 
             while (resultSet.next()){
 
-                rrpAvg = resultSet.getInt("avg");
+                rrpAvg = resultSet.getDouble("avg");
 
             }
 
@@ -138,7 +138,7 @@ public class JDBCAnswerSummary {
         return df.format(rrpAvg);
     }
 
-    private double getRrpRange(){
+    private String getRrpRange(){
         double rrpRange = 0;
         String SQL_SELECT = String.format("SELECT AVG(rrp)\n" +
                 "\tFROM public.price" +
@@ -151,7 +151,7 @@ public class JDBCAnswerSummary {
 
             while (resultSet.next()){
 
-                rrpRange = resultSet.getInt("avg");
+                rrpRange = resultSet.getDouble("avg");
 
             }
 
@@ -159,7 +159,9 @@ public class JDBCAnswerSummary {
             System.err.println(e.getMessage());
         }
 
-        return rrpRange;
+        DecimalFormat df = new DecimalFormat(".##");
+
+        return df.format(rrpRange);
     }
 
 }
