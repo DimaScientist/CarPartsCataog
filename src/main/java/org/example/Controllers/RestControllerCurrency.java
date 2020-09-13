@@ -14,6 +14,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/currency")
+
 public class RestControllerCurrency {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE )
     public List<Currency> getData(){

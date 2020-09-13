@@ -6,6 +6,17 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
 
+    <include file="db\migrations\create_tables\create-table-currency.xml"/>
+    <include file="db\migrations\create_tables\create-table-country.xml"/>
+    <include file="db\migrations\create_tables\create-table-vehicles.xml"/>
+    <include file="db\migrations\create_tables\create-table-parts.xml"/>
+    <include file="db\migrations\create_tables\create-table-partsvehicles.xml"/>
     <include file="db\migrations\create_tables\create-table-price.xml"/>
+
+    <include file="db\migrations\load_data\currency\load-data-currency.xml"/>
+    <include file="db\migrations\load_data\country\load-data-country.xml"/>
+    <include file="db\migrations\load_data\vehicles\load-data-vehicles.xml"/>
+    <include file="db\migrations\load_data\parts\load-data-parts.xml"/>
+    <include file="db\migrations\load_data\partsvehicles\load-data-partsvehicles.xml"/>
     <include file="db\migrations\load_data\price\load-data-price.xml"/>
 </databaseChangeLog>

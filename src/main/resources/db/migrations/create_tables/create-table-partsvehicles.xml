@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="unknow" id="create-table-partsvehicles-1">
+    <changeSet author="unknow" id="create-table-partsvehicles-3">
         <sql>
             DROP TABLE IF EXISTS public.partsvehicles CASCADE;
         </sql>
@@ -25,6 +25,10 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="partnum" type="text">
+                <constraints nullable="false"/>
+            </column>
+
         </createTable>
 
         <addPrimaryKey
@@ -38,6 +42,13 @@
                 constraintName="fk_carid"
                 referencedTableName="vehicles"
                 referencedColumnNames="carid"/>
+
+        <addForeignKeyConstraint
+                baseTableName="partsvehicles"
+                baseColumnNames="partnum"
+                constraintName="fk_partnum"
+                referencedTableName="parts"
+                referencedColumnNames="partnum"/>
 
     </changeSet>
 </databaseChangeLog>

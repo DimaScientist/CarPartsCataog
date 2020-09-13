@@ -6,6 +6,8 @@ public class PartsVehicles {
 
     private String altPartNum;
 
+    private String partnum;
+
     public PartsVehicles() {
     }
 
@@ -25,4 +27,10 @@ public class PartsVehicles {
         this.altPartNum = altPartNum;
     }
 
+    public String getPartnum() {
+        return partnum;
+    }
+    public void setPartnum(String partnum) {
+        this.partnum = partnum;
+    }
 }
